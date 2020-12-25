@@ -4,10 +4,10 @@
 			"path": "."
 		},
 		{
-			"path": "..\\..\\..\\Coderhouse\\Proyecto final v.01"
+			"path": "..\\..\\..\\Coderhouse\\Proyecto final"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "Proyect"
+		"liveServer.settings.multiRootWorkspaceName": "Proyecto final"
 	}
 }
