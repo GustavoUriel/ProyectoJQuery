@@ -1,0 +1,59 @@
+En el archivo index.html sumé el SEO con las siguientes características:
+Descripción: mediante la etiqueta meta name description, agregué el siguiente párrafo
+que explica en pocas palabras el contenido de mi sitio: 
+"Actualidad del fútbol de Santa Fe"
+
+Palabras clave: mediante la etiqueta meta name keywords, agregué las palabras clave que acompañarán
+a todas las páginas de mi sitio:
+"FUTBOL, SANTA FE, CLUBES, EQUIPOS, INFORMACION, UNION"
+
+Encabezado: para el encabezado del h1 utilicé el texto 
+"Novedades de los equipos de fútbol de Santa Fe"
+
+En el archivo clubes.html sumé el SEO con las siguientes características:
+Descripción: mediante la etiqueta meta name description, agregué el siguiente párrafo
+que explica en pocas palabras el contenido de mi sitio: 
+"Información de fútbol de Santa Fe"
+
+Palabras clave: mediante la etiqueta meta name keywords, agregué las palabras clave que acompañarán
+a todas las páginas de mi sitio:
+"FUTBOL, SANTA FE, CLUBES, EQUIPOS, INFORMACION"
+
+Encabezado: para el encabezado del h1 utilicé el texto 
+"Clubes"
+
+En el archivo clubes2.html sumé el SEO con las siguientes características:
+Descripción: mediante la etiqueta meta name description, agregué el siguiente párrafo
+que explica en pocas palabras el contenido de mi sitio: 
+"Información de fútbol de Santa Fe"
+
+Palabras clave: mediante la etiqueta meta name keywords, agregué las palabras clave que acompañarán
+a todas las páginas de mi sitio:
+"FUTBOL, SANTA FE, CLUBES, EQUIPOS, INFORMACION"
+
+Encabezado: para el encabezado del h1 utilicé el texto 
+"Clubes"
+
+En el archivo nosotros.html sumé el SEO con las siguientes características:
+Descripción: mediante la etiqueta meta name description, agregué el siguiente párrafo
+que explica en pocas palabras el contenido de mi sitio: 
+"Información de creadores de web de fútbol de Santa Fe"
+
+Palabras clave: mediante la etiqueta meta name keywords, agregué las palabras clave que acompañarán
+a todas las páginas de mi sitio:
+"FUTBOL, SANTA FE, INFORMACION, CREADORES WEB"
+
+Encabezado: para el encabezado del h1 utilicé el texto 
+"Nosotros"
+
+En el archivo contacto.html sumé el SEO con las siguientes características:
+Descripción: mediante la etiqueta meta name description, agregué el siguiente párrafo
+que explica en pocas palabras el contenido de mi sitio: 
+"Contacto con creadores de web de fútbol de Santa Fe"
+
+Palabras clave: mediante la etiqueta meta name keywords, agregué las palabras clave que acompañarán
+a todas las páginas de mi sitio:
+"FUTBOL, SANTA FE, CLUBES, EQUIPOS, CONTACTO"
+
+Encabezado: para el encabezado del h1 utilicé el texto 
+"Contacto"

@@ -1,19 +1,16 @@
 {
-  "name": "confusion",
+  "name": "promiedos",
   "version": "1.0.0",
-  "description": "This is a website for Ristorante Con Fusion",
+  "description": "Esta es una alternativa para tener noticias de fútbol",
   "main": "index.html",
   "scripts": {
-    "start": "npm run watch:all",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lite": "lite-server",
     "scss": "node-sass -o css/ css/",
     "watch:scss": "onchange \"css/*.scss\" -- npm run scss",
-    "watch:all": "parallelshell \"npm run watch:scss\"  \"npm run lite\" ",
     "clean": "rimraf dist",
     "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
     "imagemin": "imagemin img/* --out-dir=\"dist/img\"",
-    "usemin": "usemin contactus.html -d dist --htmlmin -o dist/contactus.html && usemin aboutus.html -d dist --htmlmin -o dist/aboutus.html && usemin index.html -d dist --htmlmin -o dist/index.html",
+    "usemin": "usemin clubes.html -d dist --htmlmin -o dist/clubes.html &&     usemin clubes2.html -d dist --htmlmin -o dist/clubes2.html &&     usemin contacto.html -d dist --htmlmin -o dist/contacto.html &&     usemin nosotros.html -d dist --htmlmin -o dist/nosotros.html &&      usemin index.html -d dist --htmlmin -o dist/index.html",
     "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin"
   },
   "author": "",

@@ -1,0 +1,439 @@
+$back_oscuro: #512DA8;
+$back_claro: #9575CD;
+$back_blanco: #D1C4E9;
+
+// Height variables
+$carousel-item-height: 300px;
+
+
+@mixin cero-margen($pad-up-dn, $pad-left-right) {
+	margin:0px auto;
+	padding: $pad-up-dn $pad-left-right;
+}
+
+.row-header{
+    @include cero-margen(0px,0px);
+}
+
+.row-content {
+    @include cero-margen(50px,0px);
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+
+.footer{
+    background-color: $back_blanco;
+    @include cero-margen(20px, 0px);
+}
+
+.jumbotron {
+    @include cero-margen(70px,30px);
+    background: $back_claro ;
+    color: floralwhite;
+}
+
+address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+}
+
+body{
+    padding:50px 0px 0px 0px;
+    z-index:0;
+}
+
+.navbar-dark {
+    background-color: $back_oscuro;
+}
+
+.tab-content {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+}
+
+.carousel {
+    background:$back_oscuro;
+    .carousel-item {
+        height: $carousel-item-height;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 200px;
+            width: 200px;
+        }
+    }
+}
+
+#carouselButton {
+    right:0px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 1;
+}
+
+.modal {
+    .modal-header{
+        background-color: $back_oscuro;
+        color: floralwhite;
+    }
+    button{
+        color: floralwhite;
+    }
+    .modal-body{
+        background-color: $back_blanco;
+    }
+}
+
+
+.row-header {
+    margin: 0px auto;
+    padding: 0px 0px; 
+  }
+.titulo-separador {
+  width: 100%;
+  align-items: center; 
+  justify-content: center;
+  background-color: lightgray;
+  padding: 20px;
+  margin: 2em 0 0 0 ;
+}
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px; 
+}
+.footer {
+  background-color: #D1C4E9;
+  margin: 0px auto;
+  padding: 20px 0px; 
+}
+.jumbotron {
+  margin: 0px auto;
+  padding: 70px 30px;
+  background: #9575CD;
+  color: floralwhite; 
+}
+
+address {
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f; 
+}
+body {
+  padding: 50px 0px 0px 0px;
+  z-index: 0; 
+}
+.navbar-dark {
+  background-color: #512DA8; 
+}
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px; }
+.carousel {
+  background: #512DA8; 
+  .carousel-item {
+    height: 200px; 
+  }
+  .carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+  }
+}
+.carousel-caption{
+  top: 0;
+  left: 40%;
+  align-items: center;
+}
+#carouselButton {
+  right: 0px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+}
+
+$colores_clubes: (
+  union: (red, floralwhite, blue),
+  colon: (black, red, white),
+  central:(blue, yellow, silver),
+  newells: (red, black, white), 
+  rafaela: (white, blue, blue)
+);
+@each $name, $value in $colores_clubes {
+  .btn-#{$name} {
+    background-color: nth($value, 1);
+    color: nth($value, 2);
+  }
+  .bkg-#{$name} {
+    color: nth($value, 3);
+    background: linear-gradient(90deg, nth($value, 2) 0%,  nth($value, 1) 30%,  nth($value, 1) 70%,  nth($value, 2) 100%);
+  }
+}
+
+.modal .modal-header {
+  background-color: #512DA8;
+  color: floralwhite; }
+
+.modal button {
+  color: floralwhite; }
+
+.modal .modal-body {
+  background-color: #D1C4E9; }
+.max150{
+  max-height: 150px;
+}
+.fijo300{
+  height: 300px;
+}
+.enlinea{
+  display: inline-block;
+}
+@keyframes rotEnY {
+  0%{ rotate: 0deg; }
+  25%{ rotate: 90deg; }
+  50%{ rotate: 180deg; }
+  75%{ rotate: 270deg; }
+  100%{ rotate: 360deg;}
+}
+
+fantasmita {
+  padding: .2rem .3rem 1rem .3rem;
+  position:relative;
+  border-radius: 2rem 2rem 0 0;
+  animation-name: animarFantasmita;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  text-align: center;
+  font-size: 10px;
+  z-index: 10;
+}
+@keyframes animarFantasmita{
+  0% {
+    color: blue;
+    background-color: red;
+    left: 10%;
+  }
+  25% {
+    color: darkgray;
+    background-color: purple;
+    left: 50%;
+  }
+  50% {
+    color: blue;
+    background-color: red;
+    left: 80%;
+  }
+  75%{
+    color: darkgray;
+    background-color: purple;
+    left: 50%;
+  }
+  100% {
+    color: blue;
+    background-color: red;
+    left: 10%;
+  }
+}
+
+.view {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  float: none;
+  border: 10px solid #fff;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  box-shadow: 1px 1px 2px #e6e6e6;
+  cursor: default;
+  .mask, .content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0
+  }
+  img {
+    display: block;
+    position: relative;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+  }
+  h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    position: relative;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    font-weight: 500;
+    display: block;
+  }
+  @media screen and (min-width : 993px)  {
+    p {
+      display: block;
+      font-size: 80%;
+    }
+    h2 {
+      display: block;
+      font-size: 120%;
+      padding: 10px;
+      margin: 10px 0 0 0;
+    }
+  }
+  @media screen and (max-width : 992px)  {
+    p {
+      display: none;
+    }
+    h2 {
+      display: block;
+      font-size: 100%;
+      padding: 10px;
+      margin: 10px 0 0 0;
+    }
+  }
+  @media screen and (max-width : 767px)  {
+    p {
+      display: block;
+      font-size:70%;
+      padding: 10px;
+      margin: 0;
+    }
+    h2 {
+      display: block;
+      font-size: 100%;
+      padding: 5px;
+      margin: 0;
+    }
+  }
+    @media screen and (max-width : 575px)  {
+      p {
+        display: block;
+        font-size:120%;
+      }
+      h2 {
+        display: block;
+        font-size: 120%;
+        padding: 5px;
+        margin: 0 0 0 0;
+      }
+    }
+    @media screen and (max-width : 450px)  {
+      p {
+        display: block;
+        font-size:60%;
+      }
+      h2 {
+        display: block;
+        font-size: 80%;
+        padding: 0px;
+        margin: 0 0 0 0;
+      }
+    }
+  a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+  }
+  a.info:hover {
+    box-shadow: 0 0 5px #000
+  }
+}
+  
+  /* ANIMACIONES Estados originales*/
+  
+  .view-si img { 
+      transition: all 0.4s ease-in-out 0.5s; 
+  }
+  .view-si .mask{ 
+      background-color: $back_oscuro ;
+      opacity:0;
+      transition: all 0.3s ease-in 0.4s;
+  }
+  .view-si h2{
+      opacity:0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      background: transparent;
+      transform: scale(10);
+      transition: all 0.3s ease-in-out 0.1s;
+  }
+  .view-si p { 
+      opacity:1;
+      transform: scale(10);
+      transition: all 0.3s ease-in-out 0.2s;
+  }
+  .view-si a.info { 
+      opacity:0;
+      transform: translateY(100px);
+      transition: all 0.3s ease-in-out 0.1s;
+  }
+  
+  /* ANIMACIONES Estados cuando hover*/
+  
+  .view-si:hover .mask {  
+      opacity:0.9; 
+      transition-delay: 0s;
+  }																			 
+  .view-si:hover img { 
+      transition-delay: 0s; 
+  }
+  .view-si:hover h2 { 
+      opacity: 1;
+      transform: scale(1);
+      transition-delay: 0.1s;
+  }
+  .view-si:hover p { 
+      opacity:1; 
+      transform: scale(1);
+      transition-delay: 0.2s;
+  }
+  .view-si:hover a.info { 
+      opacity:1;
+      transform: translateY(0px);
+      transition-delay: 0.3s;
+  }
+
+  .contenedorDeCuadrosDeClubes{
+    padding :  0 3%;
+  }
+  .cuadroDeClub{
+    border-style: ridge;
+    border-color: blue;
+    border-width: 1px;
+  }
+
+  
+.textoCuadroDeClubes {
+  text-align: center;
+  font-size: 25.5vw;
+  background-color: blue;
+}
+.block-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 9px;
+  
+} 
+

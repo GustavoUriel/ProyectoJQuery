@@ -1,0 +1,221 @@
+.titulo-separador {
+  width: 100%;
+  align-items: center; 
+  justify-content: center;
+  background-color: lightgray;
+  padding: 20px;
+  margin: 2em 0 0 0 ;
+}
+
+.imgCompleta{
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-caption{
+  top: 0;
+  left: 40%;
+  align-items: center;
+}
+
+.btn-union{
+  background-color:red;
+  color: floralwhite;}
+.btn-colon{
+  background-color:black;
+  color: red;}
+.btn-central{
+  background-color:blue;
+  color: yellow;}
+.btn-newells{
+  background-color:red;
+  color: black;}
+.btn-rafaela{
+  background-color: white;
+  color: blue;}
+.bkg-union{
+  color:blue;
+  background: linear-gradient(90deg,red 0%, pink 50%, red 100%);}
+.bkg-colon{
+  color:white;
+  background: linear-gradient(90deg, red 0%,black 50%, red 100%);}
+.bkg-central{
+  color: white;
+  background: linear-gradient(90deg, rgba(255, 255, 0, 0.75) 0%, blue 33%, blue 66%, rgba(255, 255, 0, 0.75) 100%);}
+.bkg-newells{
+  color:white;
+  background: linear-gradient(90deg, black 0%, red 50%, black 100%);}
+.bkg-rafaela{
+  color: black;
+  background: linear-gradient(90deg, blue 0%, lightblue 50%, blue 100%);}
+                                
+
+.max150{
+  max-height: 150px;
+}
+.fijo300{
+  height: 300px;
+}
+.enlinea{
+  display: inline-block;
+}
+/* @keyframes rotEnY {
+  0%{ rotate: 0deg; }
+  25%{ rotate: 90deg; }
+  50%{ rotate: 180deg; }
+  75%{ rotate: 270deg; }
+  100%{ rotate: 360deg;}
+} */
+
+fantasmita {
+  padding: .2rem .3rem 1rem .3rem;
+  position:relative;
+  border-radius: 2rem 2rem 0 0;
+  animation-name: animarFantasmita;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  text-align: center;
+  font-size: 10px;
+  z-index: 10;
+}
+@keyframes animarFantasmita{
+  0% {
+    color: blue;
+    background-color: red;
+    left: 10%;
+  }
+  25% {
+    color: darkgray;
+    background-color: purple;
+    left: 50%;
+  }
+  50% {
+    color: blue;
+    background-color: red;
+    left: 80%;
+  }
+  75%{
+    color: darkgray;
+    background-color: purple;
+    left: 50%;
+  }
+  100% {
+    color: blue;
+    background-color: red;
+    left: 10%;
+  }
+}
+
+/* Cuadros animados CLASES*/
+
+.view {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  float: none;
+  border: 10px solid #fff;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  box-shadow: 1px 1px 2px #e6e6e6;
+  cursor: default;
+}
+.view .mask, .view .content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0
+}
+.view img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.view h2 {
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  margin: 20px 0 0 0
+}
+.view p {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  position: relative;
+  color: #fff;
+  padding: 10px 20px 20px;
+  text-align: center
+}
+.view a.info {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px;
+  background: #000;
+  color: #fff;
+  text-transform: uppercase;
+  box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+  box-shadow: 0 0 5px #000
+}
+
+/* ANIMACIONES Estados originales*/
+
+.view-si img { 
+	transition: all 0.4s ease-in-out 0.5s; 
+}
+.view-si .mask{ 
+	background-color: rgba(146,96,91,0.5);
+	opacity:0;
+	transition: all 0.3s ease-in 0.4s;
+}
+.view-si h2{
+	opacity:0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: transparent;
+    margin: 20px 40px 0px 40px;
+    transform: scale(10);
+    transition: all 0.3s ease-in-out 0.1s;
+}
+.view-si p { 
+	opacity:0;
+    transform: scale(10);
+	transition: all 0.3s ease-in-out 0.2s;
+}
+.view-si a.info { 
+	opacity:0;
+    transform: translateY(100px);
+	transition: all 0.3s ease-in-out 0.1s;
+}
+
+/* ANIMACIONES Estados cuando hover*/
+
+.view-si:hover .mask {  
+	opacity:1; 
+	transition-delay: 0s;
+}																			 
+.view-si:hover img { 
+	transition-delay: 0s; 
+}
+.view-si:hover h2 { 
+	opacity: 1;
+    transform: scale(1);
+	transition-delay: 0.1s;
+}
+.view-si:hover p { 
+	opacity:1; 
+    transform: scale(1);
+	transition-delay: 0.2s;
+}
+.view-si:hover a.info { 
+	opacity:1;
+    transform: translateY(0px);
+	transition-delay: 0.3s;
+}

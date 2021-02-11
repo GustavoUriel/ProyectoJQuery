@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $("#mycarousel").carousel({  
         interval: 2000 
-    }); // Doesn't work, I had to specify it in the div
+    });
     $("#carouselButton").click(function(){
         if ($("#carouselButton").children("span").hasClass('fa-pause')) {
             $("#mycarousel").carousel('pause');
@@ -14,8 +14,8 @@ $(document).ready(function(){
             $("#carouselButton").children("span").addClass('fa-pause');                    
         }
     });
-    $("#ReservationsButton").click(function(){
-        $("#ReservationsModal").modal('show');
+    $("#RegistrarseButton").click(function(){
+        $("#RegistrarseModal").modal('show');
     });
     $("#LogInButton").click(function(){
         $("#LogInModal").modal('show');
