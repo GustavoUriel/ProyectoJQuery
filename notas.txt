@@ -1,0 +1,149 @@
+Inicio: propuestas
+
+Qué querés hacer?
+Necesito dinero para...
+    Auto
+    construir
+    viaje
+    viaje de egresados
+    regalo
+Debo mucho de Tarjetas...
+
+
+
+En cuanto al desafío te paso unas correcciones: 
+
+//    En let consulta podrias poner un parseInt al prompt ya que en el switch y los case lo evaluas como un int
+    Para que el usuario tenga la opcion de no realizar una consulta, el primer prompt deberia estar por fuera y antes del while
+
+
+//    Fijate que toLowerCase lo estas llamando como una propiedad en lugar de como una funcion toLowerCase() lo que hace que no te funcione
+
+    Fijate de ir armando la estructura HTML porque para el desafío de DOM va a necesitarlo ademas de que no queda mucho tiempo para el fin de cursada
+
+//    Los sort estas haciendolos bien (luego de que apliques la correccion de toLowerCase()), pero no podes verlo porque estas generando el mensaje antes de ordenar el array. Podrias o bien agregar el for con el que creas el mensaje dentro de la funcion consultar() (Antes de mostrar por prompt el mensaje) o crear una función por ejemplo generarMensaje() que se ejecute antes de la funcion consultar()
+
+//    Te recomiendo crear una segunda variable para guardar el valor del segundo prompt (el que se usa en consultar()), en vez de sobreescribir la variable consulta que es la que se evalua en el while. De esta manera evitamos confusiones en el codigo y posibles efectos colaterales en el while
+    
+//    En la funcion  mostrar_detalles() le asignas a la variable consulta el valor 1, esto termina provocando que nunca se pueda salir del while. Te recomiendo que no asignes este valor aca, sino que como te dije mas arriba, antes de finalizar el while pidas por prompt la opcion del usuario
+
+
+https://app.alprestamo.com/
+Empleado
+Empleado Público
+Monotributista
+Trabajador Independiente
+Jubilado
+Autónomo
+Beneficiario de Plan
+Desempleado
+Otro
+
+Banco Supervielle
+Banco Provincia de Buenos Aires
+Banco Patagonia
+Banco ICBC
+Banco BBVA
+Banco de Cordoba
+Banco de la Ciudad de Buenos Aires
+Banco Hipotecario
+Banco de San Juan
+Banco de Tucuman
+Banco de Rosario
+Banco Santander Rio
+Banco del Chubut
+Banco Santa Cruz
+Banco de La Pampa
+Banco de Corrientes
+Banco Regional de Cuyo
+Banco Provincia de Neuquen
+Banco Brubank
+Banco Interfinanzas
+Banco CrediCoop
+Banco de Valores
+Banco ROELA
+Banco MARIVA
+Banco Itau
+Banco Provincia de Tierra del Fuego
+Banco ENZ
+Banco MERIDIAN
+Banco Comafi
+Banco DE INVERSION Y COMERCIO EXTERIOR S
+Banco Piano
+Banco Julio
+Banco Rioja
+Banco DEL SOL
+Banco Nuevo del Chaco
+Banco VOII
+Banco de Formosa
+Banco CMF
+Banco de Santiago del Estero
+Banco Industrial
+Banco Nuevo de Santa Fe
+Banco CETELEM ARGENTINA
+Banco DE SERVICIOS FINANCIEROS
+Banco BRADESCO ARGENTINA U
+Banco DE SERVICIOS Y TRANCCIONES
+MASVENTAS
+Wilobank
+Uala
+Nuevo de Entre Rios
+COLUMBIA
+BICA
+COINAG
+de Comercio
+
+
+
+
+https://www.elmejortrato.com.ar/prestamos-personales/Prestamos-Personales-Buscar.aspx
+CRÉDITOS
+    Préstamos Personales
+    Préstamos por Banco
+    Préstamos por Provincia
+    Préstamos por Tipo
+
+INVERSIONES
+    Depósitos en Plazo Fijo
+    Inversiones por Compañía
+    Inversiones por Provincia
+    Inversiones por Tipo
+
+SEGUROS
+    Seguros de Auto
+    Seguros de Auto por Aseguradora
+    Seguros de Auto por Provincia
+    Seguros de Auto por Tipo de Seguro
+    Seguros de Auto por Marca
+
+PLANES DE AUTO
+    Planes de Auto
+    Planes de Auto por Compañía
+    Planes de Auto por Provincia
+    Planes de Auto por Marca
+    Planes de Auto por Tipo
+
+PLANES DE SALUD
+    Obras Sociales Prepagas
+    Planes de Salud por Compañía
+    Planes de Salud por Provincia
+    Planes de Salud por Tipo
+
+SOBRE NOSOTROS
+    Sobre Nosotros
+    Términos y Condiciones
+    Contacto
+
+
+OTROS PAISES
+    Préstamos y Seguros en México
+    Empréstimos e Seguros no Brasil
+    Créditos y Seguros en Colombia
+    Créditos y Seguros en Perú
+    Loans and Insurance in South Africa
+
+    Seguros de Autos
+    Seguros de Vida
+    Seguros de Hogar
+    Préstamo Personal
+    Tarjetas de Crédito

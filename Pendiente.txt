@@ -1,2 +1,0 @@
-Que el texto de los cuadrados del clubes2 se achique cuando se achica el contenedor
-En central puse que no muestre el texto en md, como solución para el font resize, pero no resulta bien
