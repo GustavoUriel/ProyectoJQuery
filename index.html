@@ -1,198 +1,647 @@
 <!DOCTYPE html>
-<html lang="en">
+<lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Comparar tarifas créditos interés seguros plazos fijos plata dinero ahorro">
-    <meta name="keywords"  content="Comparar tarifas créditos interés seguros plazos fijos plata dinero ahorro">
-    <title>Comparador de créditos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
-    <link href="css/styles.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="description" content="Comparar tarifas créditos interés seguros plazos fijos plata dinero ahorro">
+	<meta name="keywords"  content="Comparar tarifas créditos interés seguros plazos fijos plata dinero ahorro">
+	<title>Comparador de créditos</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
+	<link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-<!--     <div include-html="htmls/navbar.html"></div> -->
-    <nav class="navbar navbar-dark navbar-expand-sm fixed-top"> <!-- Navbar -->
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mr-auto" href="#"><img src="https://dummyimage.com/300x300/9675cd/522da8.png&text=$$$" height="30" alt="$$$$$"></a>
-            <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav mr-auto">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active"><a class="nav-link" href="./index.html"><span class="fa fa-home fa-lg"></span> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Servicios.html"><span class="fa fa-list fa-lg"></span> Servicios</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Nosotros.html"><span class="fa fa-info fa-lg"></span> Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Contanos.html"><span class="fa fa-address-card fa-lg"></span> Contanos algo...</a></li>
-                    </ul>            
-                </ul>
-                <span class="navbar-text">
-                    <a>
-                    <span class="fa fa-sign-in" id="LogInButton"> Ingresar!</span> </a>
-                </span>
+
+	<!--    MODAL INGRESAR -->
+	<div id="LogInModal" class="modal fade" role="dialog"> <!-- Ingresar -->
+		<div class="modal-dialog modal-lg" role="content">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Ingresar </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-row">
+							<div class="form-group col-sm-4">
+									<label class="sr-only" for="email" id="logInEmail">E-mail</label>
+									<input type="email" class="form-control form-control-sm mr-1" id="logInEmail" value="E-mail">
+							</div>
+							<div class="form-group col-sm-4">
+								<label class="sr-only" for="pass" id="logInContrasena">Contraseña</label>
+								<input type="password" class="form-control form-control-sm mr-1" id="logInContrasena" placeholder="Contraseña">
+							</div>
+							<div class="col-sm-auto">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox">
+									<label class="form-check-label"> Recordarme
+									</label>
+									<button type="button" class="btn btn-primary btn-sm ml-auto" id="clearStorage">Borrar localStorage
+										Se vuelve a crear los mismos usuarios con cuentas al azar al refrescar la página.
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<label>No funciona el registro ni el ingreso, seleccione un usuario de los precargados:</label>
+						</div>
+						<div class="form-row">
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs00">00</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs01">01</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs02">02</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs03">03</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs04">04</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs05">05</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs06">06</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs07">07</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs08">08</button>
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs09">09</button>
+						</div>
+						<div class="form-row">
+							<label>  </label>
+						</div>
+						<div class="form-row">
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-primary btn-sm ml-1" id="logInButton">Ingresar</button>        
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--    MODAL REGISTRARSE -->
+	<div id="RegistrarseModal" class="modal fade" role="dialog"> <!-- Registrarse -->
+		<div class="modal-dialog modal-lg" role="content">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title font-weight-bold">Registrarse</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div  class="form-group form-row align-self-center">
+							<div class="col-12 offset-2">
+									<h4>Datos de ingreso</h4>
+							</div>
+							<div class="form-group form-row">
+									<div class="col-12">
+									<input class="form-control" id="frmEmail" name="frmEmail" placeholder="e-mail">
+								</div>
+								<div class="col-12">
+									<input type="password" class="form-control" id="frmPassword" name="frmPassword" placeholder="Contraseña">
+								</div>
+								<div class="col-12">
+									<input type="password" class="form-control" id="frmVPassword" name="frmVPassword" placeholder="Verificar contraseña">
+								</div>
+							</div>
+							<div class="col-12 offset-2">
+									<h4>Datos personales</h4>
+							</div>
+						</div>
+						<div class="form-group form-row">
+							<input class="form-control" id="frmApellido" name="frmApellido" placeholder="Apellido">
+							<input class="form-control" id="frmNombres" name="frmNombres" placeholder="Nombres">
+							<select class="form-control" id="selectProvincia" name="selectProvincia" placeholder="Provincia">
+							</select>
+							<select class="form-control" id="selectTrabajo" name="selectTrabajo" placeholder="Ingresos">
+							</select>
+							<input class="form-control" id="frmIngresosSueldo" name="frmIngresosSueldo" placeholder="Ingreso por sueldo en blanco">
+							<input class="form-control" id="frmIngresosAutonomo" name="frmIngresosAutonomo" placeholder="Ingreso promedio como cuentapropista">
+							<input class="form-control" id="frmIngresosNegro" name="frmIngresosNegro" placeholder="Promedio de otros ingresos sin registrar">
+						</div>
+						<div class="form-group form-row">
+							<div class="col-12 offset-2">
+								<button type="cancel" data-dismiss="modal" class="btn btn-secondary font-weight-bold">Cancelar</button>
+								<button type="submit" class="btn btn-primary font-weight-bold">Registrarse</button>
+								<label><input id="frmRegistrarRecordarme" name="frmRegistrarRecordarme" type="checkbox" value="">Recordarme (siempre recuerda por ahora)</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+	<!--    MODAL ANONIMO -->
+	<div id="AnonimoModal" class="modal fade" role="dialog"> <!-- Registrarse -->
+		<div class="modal-dialog modal-lg" role="content">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title font-weight-bold">Probar</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="col-12">
+							<h4>Datos "para ir sabiendo"</h4>
+						</div>
+						<div class="form-group form-row">
+							<select class="form-control" id="selectAProvincia" name="selectProvincia" placeholder="Provincia">
+							</select>
+							<select class="form-control" id="selectATrabajo" name="selectTrabajo" placeholder="Ingresos">
+							</select>
+							<input class="form-control" id="frmIngresos" name="frmIngresos" placeholder="Ingreso medio estimado">
+						</div>
+						<div class="col-12">
+							<h4>Sabé dos cosas: Una que podemos encontrar mejores propuestas si nos das datos reales. Y dos que los datos que cargás cuando te registrás son completamente privados.</h4>
+						</div>
+						<div class="form-group form-row">
+							<div class="col-12 col-md offset-2">
+							<button type="cancel" data-dismiss="modal" class="btn btn-secondary font-weight-bold">Cancelar</button>
+							<button type="submit" class="btn btn-primary font-weight-bold">Probar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+	<!--    MODAL DISCLAIMER -->
+	<div id="DisclaimerModal" class="modal fade" role="dialog"> <!-- Ingresar -->
+		<div class="modal-dialog modal-lg" role="content">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Desligación de responsabilidades </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-row">
+							<div class="form-group col-sm-4">
+									<label class="sr-only">No somos responsables de la información mostrada
+														   Sólo la generamos de acuerdo a la información proporcionada por los Bancos
+														   Y nuestro avanzado algoritmo de procesamiento.
+														   Además, ésto no es más que un simulador :)
+									</label>
+							</div>
+						</div>
+						<div class="form-row">
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cerrar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--    MODAL CONDICIONES DE USO -->
+	<div id="CondicionesDeUsoModal" class="modal fade" role="dialog"> <!-- Ingresar -->
+		<div class="modal-dialog modal-lg" role="content">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Condiciones de utilización de esta página </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-row">
+							<div class="form-group col-sm-4">
+									<label class="sr-only">Acepto que, aunque no se publique y se cuide la información personal
+															De todas formas es posible que sea accedida por medio de instrusiones
+															Al sistema, como ocurre con otros sistemas como Facebook y Gmail.
+															Además, ésto no es más que un simulador :)
+									</label>
+							</div>
+						</div>
+						<div class="form-row">
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cerrar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<header>
+
+		<!--    OBJ NAVBAR -->
+		<nav class="navbar navbar-dark navbar-expand-sm fixed-top"> <!-- Navbar -->
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand mr-auto" href="#"><img src="https://dummyimage.com/300x300/9675cd/522da8.png&text=$$$" height="30" alt="$$$$$"></a>
+				<div class="collapse navbar-collapse" id="Navbar">
+					<ul class="navbar-nav mr-auto">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active nav-link" id="navbarItem1"><span class="fa fa-home fa-lg"></span> Home</li>
+							<li class="nav-item  nav-link" id="navbarItem2"><span class="fa fa-server  fa-lg"></span> Servicios</li>
+							<li class="nav-item  nav-link" id="navbarItem3"><span class="fa fa-home fa-lg"></span> Nosotros</li>
+							<li class="nav-item  nav-link" id="navbarItem4"><span class="fa fa-home fa-lg"></span> Contanos algo...</li>
+						</ul>            
+					</ul>
+					<span class="navbar-text">
+						<a>
+						<span class="fa fa-sign-in" id="LogInButton"> Ingresar!</span> </a>
+					</span>
+				</div>
+			</div>
+		</nav>
+
+		<!--    OBJ JUMBOTRON -->
+			<div class="jumbotron p-5"> <!-- Header Jumbotron -->
+				<div class="container">
+					<div class="row">
+						<div class="col-4 align-self-center text-center">
+							<h1>ES TU PLATA!!</h1>
+							<h3>Y te decimos cómo cuidarla</h3>
+						</div>
+						<div class="col-6 col-sm align-self-center">
+							<img src="https://dummyimage.com/300x300/9675cd/522da8.png&text=$$$" class="img-fluid max150" alt="LOGOLOGO">
+						</div>
+						<div class="col-12 col-sm align-self-center">
+							<button class="btn btn-block nav-link btn-warning font-weight-bold" 
+								id="RegistrarseButton">Registrate...
+							</button>
+							<button class="btn btn-block nav-link btn-light font-weight-bold" 
+								id="AnonimoButton">Mirá qué encontramos, sin dar tus datos personales
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	</header> 
+
+	<!--    PAGINA PRINCIPAL -->
+	<div id="seccionHome">
+		<!--    CAROUSEL -->
+		<div class="container" id="objCarousel">
+			<div class="row row-content"> <!-- Carousel -->
+				<div class="col">
+					<div id="carouselOtorgantes" class="carousel" data-ride="carousel" data-interval="1000">
+						<div class="carousel-inner" id="carouselDentro" role="listbox">
+							<div class="carousel-item active ">
+								<a href=".">
+									<img class="d-block img-fluid"
+									src="https://dummyimage.com/300x300/9675cd/522da8.png&text=NOSOTROS" alt="Nuestros socios">
+								</a>
+								<div class="carousel-caption d-none d-sm-block">
+									<h2><span class="badge badge-success">Nosotros, estamos para vos</span></h2>
+									<p class="d-none d-sm-block">
+										Bancos e instituciones financieras con los que trabajamos<br>
+										En sólo dos años más, más de 700 días brindando asesoramiento de excelencia<br>
+									</p>
+								</div>
+							</div>
+						</div>
+						<ol class="carousel-indicators" id="carouselIndicadores">
+							<li data-target="#carouselOtorgantes" data-slide-to="0" class="active"></li>
+							<li data-target="#carouselOtorgantes" data-slide-to="1"></li>
+							<li data-target="#carouselOtorgantes" data-slide-to="2"></li>
+							<li data-target="#carouselOtorgantes" data-slide-to="3"></li>
+							<li data-target="#carouselOtorgantes" data-slide-to="4"></li>
+						</ol>
+						<a class="carousel-control-prev" href="#carouselOtorgantes" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon"></span>
+						</a>
+						<a class="carousel-control-next" href="#carouselOtorgantes" role="button" data-slide="next">
+							<span class="carousel-control-next-icon"></span>
+						</a>
+						<button class="btn btn-danger btn-sm" id="carouselButton">
+							<span class="fa fa-pause"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<!--    PAGINA NOSOTROS -->
+	<div id="seccionNosotros" style="display: none"> <!-- Nosotros -->
+		<div class="col col-sm-6 "> <!-- Historia -->
+			<h2>Nuestra Historia</h2>
+			<p>Empezamos a hacer esta página como un proyecto del cursado de Full Stack de <em>CoderHouse</em>.</p>
+			<p>Por ahora pinta bien. Ya llevamos más de 150 horas vertidas en este proyecto.</p>
+		</div>
+		<div class="col-12 col-sm-6"> <!-- Números -->
+			<div class="card">
+				<h3 class="card-header bg-primary text-white">Nuestros números</h3>
+				<div class="card-body">
+					<dl class="row">
+						<dt class="col-6">Comienzo:</dt>
+						<dd class="col-6">16 de noviembre de 2020</dd>
+						<dt class="col-6">Simultáneamente:</dt>
+						<dd class="col-6">Trabajo regular</dd>
+						<dt class="col-6">Ingresos anuales:</dt>
+						<dd class="col-6">Para qué te voy a amargar a vos también?</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="col-12"> <!-- Quote -->
+			<div class="card card-body bg-light">
+				<blockquote class="blockquote">
+					<p class="mb-0">Successful people are always looking for opportunities to help others.
+						Unsuccessful people are always asking, "What's in it for me?</p>
+					<footer class="blockquote-footer">Brian Tracy,
+						<cite title="Source Title">Author and motivational speaker</cite>
+					</footer>
+				</blockquote>
+			</div>
+		</div>
+		<div class="row"> <!-- acordeon áreas de servicios -->
+			<div class="col-12">
+				<h2 class="titulo-separador">Nuestras áreas de servicio (El acordeón de la vida)</h2>
+				<div id="acordeon">
+					<div class="card">
+						<div class="card-header" role="tab" id="ceroEncabezado">
+							<h3 class="mb-0">
+								<a data-toggle="collapse" data-target="#cero">
+								Padre de familia<small>  Principal función</small>
+								</a>
+							</h3>
+						</div>
+						<div class="collapse show" id="cero" data-parent="#acordeon">
+							<div class="card-body">
+								<p class="">Mantenemos el orden y la estructura de una familia funcional. Siempre al servicio de la jefa y los pequeños jefes.</p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" role="tab" id="unoEncabezado">
+							<h3 class="mb-0">
+								<a data-toggle="collapse" data-target="#uno">
+								Servicios en oficinas<small>  Principal dedicación horaria</small>
+								</a>
+							</h3>
+						</div>
+						<div class="collapse" id="uno" data-parent="#acordeon">
+							<div class="card-body">
+								<p class="">Hacemos todo lo que pide el que paga el sueldo, con profesionalismo y buena actitud. Realización de complejos procedimientos legales y escritura de su documentación según los más altos estándares internacionales. Atención al cliente. Asesistencia a personas públicas en sus publicaciones.</p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" role="tab" id="dosEncabezado">
+							<h3 class="mb-0">
+								<a class="collapsed" data-toggle="collapse" data-target="#dos">
+									Estudios judaicos avanzados<small>  Doble turno</small>
+								</a>
+							</h3>
+						</div>
+						<div class="collapse" id="dos" data-parent="#acordeon">
+							<div class="card-body">
+								<p class="">Dedicación al estudio por vocación, textos en hebreo y arameo, en solitario y en grupo.</p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+							<div class="card-header" role="tab" id="tresEncabezado">
+							<h3 class="mb-0">
+								<a class="collapsed" data-toggle="collapse" data-target="#tres">
+								Servicios de sistemas<small>  Casos puntuales</small>
+								</a>
+							</h3>
+						</div>
+						<div class="collapse" id="tres" data-parent="#acordeon">
+							<div class="card-body">
+								<p class="">Sólo para clientes que pagan bien, o para amigos.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--    PAGINA SERVICIOS USUARIO -->
+	<div id="seccionServiciosUsuario" style="display: none"> <!-- Nosotros -->
+		<div class="container"></div> 
+			<div class="row"> 
+				<div id="txtInformacionPersonal" class="col-10 offset-1">
+				</div>
+			</div>
+			<div class="row"> 
+				<div class="col-12">
+					<h2 class="titulo-separador">Estas son las cuentas que nos contaste que tenés</h2>
+					<div id="acordeonServiciosUsuario">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--    PAGINA CONTANOS ALGO -->
+	<div id="seccionContanosAlgo" style="display: none">
+		<div class="row row-content"> <!-- Información de contacto -->
+			<div class="col-12">
+				<h3>Información de Contacto</h3>
+			</div>
+			<div class="col-12 col-sm-4 offset-sm-1">
+					<h5>Nuestra dirección</h5>
+					<address style="font-size: 100%">
+						Avenida Siempreviva 742<br>
+						Springfield, Argentina<br>
+						<i class="fa fa-phone"></i>: +555 5555 5555<br>
+						<i class="fa fa-fax"></i>: +555 5555 5556<br>
+						<i class="fa fa-envelope"></i>:
+						<a href="mailto:glevcovich@outlook.com">glevcovich@outlook.com</a>
+					</address>
+			</div>
+			<div class="col-12 col-sm-6 offset-sm-1">
+				<h5>Nuestra ubicación</h5>
+				<div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=puerto%20madero%20alvear%20tower&t=k&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://youtube-embed-code.com">youtube embed code</a></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style>
+				</div>
+			</div>
+			<div class="col-12 col-sm-11 offset-sm-1">
+				<div class="btn-group" role="group">
+					<a role="button" class="btn btn-primary" href="tel:+55555555555"><i class="fa fa-phone"></i> Llámenos</a>
+					<a role="button" class="btn btn-info"><i class="fa fa-skype"></i> Skype</a>
+					<a role="button" class="btn btn-success" href="mailto:glevcovich@outlook.com"><i class="fa fa-envelope-o"></i> E-mail</a>
+				</div>
+			</div>
+		</div>
+		<div class="row row-content"> <!-- Formulario de sugerencias -->
+			<div class="col-12">
+				<h3>Sugerencias</h3>
+			</div>
+			<div class="col-12 col-md-9">
+				<form>
+					<div class="form-group row">
+						<label for="nombre" class="col-md-2 col-form-label">Nombre</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="apellido" class="col-md-2 col-form-label">Apellido</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="telnum" class="col-12 col-md-2 col-form-label">Teléfono</label>
+						<div class="col-7 col-md-7">
+							<input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Teléfono">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="emailid" class="col-md-2 col-form-label">E-mail</label>
+						<div class="col-md-10">
+							<input type="email" class="form-control" id="emailid" name="emailid" placeholder="E-mail">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-6 offset-md-2">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" name="contactame" id="contactame" value="">
+								<label class="form-check-label" for="contactame">
+									<strong>Podemos contactarte?</strong>
+								</label>
+							</div>
+						</div>
+						<div class="col-md-3 offset-md-1">
+							<select class="form-control">
+								<option>Tel.</option>
+								<option>E-mail</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="feedback" class="col-md-2 col-form-label">Tus sugerencias</label>
+						<div class="col-md-10">
+							<textarea class="form-control" id="sugerencias" name="sugerencias" rows="12"></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-md-2 col-md-10">
+							<button type="submit" class="btn btn-primary">Enviar</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--    PAGINA SERVICIOS -->
+    <div id="seccionServicios" style="display: none">
+        <div class="row row-content align-items-center"> 
+            <div class="col-12 col-sm-4 col-md-3 order-sm-last">
+                <h3>Propuestas para ahorrar en tus tarjetas</h3>
+            </div>
+            <div class="col col-sm col-md order-sm-first">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail align-self-center"
+                            src="https://dummyimage.com/300x300/9675cd/522da8.png&text=Buu_Tarjetas" alt="Ahorrate los intereses">
+                    <div class="media-body">
+                        <h2 class="mt-0">Pagá mucho menos de intereses
+                            <span class="badge badge-danger">HOT</span>
+                            <span class="badge badge-pill badge-secondary">Hasta un 50% menos!</span>
+                        </h2>
+                        <p class="d-none d-sm-block">
+							Te sugerimos opciones para conseguir el dinero y pagar el saldo completo de 
+							las tarjetas. Todas las tarjetas te cobran un interes monstruoso, de los que 
+							nunca terminás de salir. Conseguí el dinero a menos costo, y lo pagás en más
+							cuotas mucho más barato.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-
-<!--     <div include-html="htmls/modal_registrarse.html"></div> -->
-    <div id="RegistrarseModal" class="modal fade" role="dialog"> <!-- Registrarse -->
-        <div class="modal-dialog modal-lg" role="content">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title font-weight-bold">Registrarse</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="row row-content align-items-center">
+            <div class="col-12 col-sm-4 col-md-3">
+                <h3>Tenés asegurado el auto? Tenés seguro en tu vivienda?</h3>
+            </div>
+            <div class="col col-sm col-md">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail align-self-center order-sm-last"
+                            src="https://dummyimage.com/300x300/9675cd/522da8.png&text=Seguros_Económicos" alt="Seguros Económicos">
+                    <div class="media-body">
+                        <h2 class="mt-0">Los más baratos, que responden!
+                            <span class="badge badge-danger">Actualizado</span>
+                        </h2>
+                        <p>
+							Los seguros de vehículos y de domicilio son de los mejores negocios de los bancos. Podrás comparar 
+							precios de diferentes aseguradoras por la misma cobertura, y también aceder al foro donde otros usuarios
+							comentan si las compañías respondieron como ellos esperaba o no.
+						</p>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div  class="form-group form-row align-self-center">
-                            <div class="col-12 col-md-2">
-                                    <h4>Datos personales</h4>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <input class="form-control" id="frmEmail" name="frmEmail" placeholder="e-mail">
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <input type="password" class="form-control" id="frmPassword" name="frmPassword" placeholder="Contraseña">
-                            </div>
-                        </div>
-                        <div class="form-group form-row">
-                            <input class="form-control" id="frmApellido" name="frmApellido" placeholder="Apellido">
-                            <input class="form-control" id="frmNombres" name="frmNombres" placeholder="Nombres">
-                            <input class="form-control" id="frmProvincia" name="frmProvincia" placeholder="Provincia">
-                        </div>
-                        <div class="form-group form-row">
-                            <div class="col-12 col-md offset-2">
-                            <button type="cancel" data-dismiss="modal" class="btn btn-secondary font-weight-bold">Cancelar</button>
-                            <button type="submit" class="btn btn-primary font-weight-bold">Registrarse</button>
-                            </div>
-                        </div>
-                    </form>
+            </div>
+        </div>
+        <div class="row row-content align-items-center">
+            <div class="col-12 col-sm-4 col-md-3 order-sm-last">
+                <h3>Cambiar el auto, hacer un viaje, arreglar la casa...</h3>
+            </div>
+            <div class="col col-sm col-md order-sm-first">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail align-self-center"
+                            src="https://dummyimage.com/300x300/9675cd/522da8.png&text=No_TE PRIVES_DE_VIVIR" alt="NO TE PRIVES DE VIVIR">
+                    <div class="media-body">
+                        <h2 class="mt-0">Y si conseguís el dinero con facilidad?</h2>
+                        <h4>Planes transparentes para todos!</h4>
+                        <p class="d-none d-sm-block">
+							Te conseguimos créditos blandos para que puedas comprar lo que siempre quisiste, o viajar a donde soñaste,
+							a tasas más bajas que la inflación. Entrá en la calculadora de créditos, ingresá cuánto necesitás y en
+							cuánto tiempo lo querés pagar.
+						</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-<!--     <div include-html="htmls/modal_login.html"></div> -->
-    <div id="LogInModal" class="modal fade" role="dialog"> <!-- Ingresar -->
-        <div class="modal-dialog modal-lg" role="content">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Ingresar </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-sm-4">
-                                    <label class="sr-only" for="email">E-mail</label>
-                                    <input type="email" class="form-control form-control-sm mr-1" id="email" placeholder="E-mail">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label class="sr-only" for="pass">Contraseña</label>
-                                <input type="password" class="form-control form-control-sm mr-1" id="pass" placeholder="Contraseña">
-                            </div>
-                            <div class="col-sm-auto">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox">
-                                    <label class="form-check-label"> Recordarme
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-sm ml-1">Ingresar</button>        
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	<footer> <!-- Footer -->
+		<div class="container">
+			<div class="row">             
+				<div class="col-4 col-sm-2 offset-1">
+					<h5>Links</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Home</a></li>
+						<li><a href="./nosotros.html">Nosotros</a></li>
+						<li><a href="./clubes.html">Clubes</a></li>
+						<li><a href="./contacto.html">Contacto</a></li>
+					</ul>
+				</div>
+				<div class="col-7 col-sm-5">
+					<h5>Nuestra dirección</h5>
+					<address>
+					Avenida Siempreviva 742<br>
+					Springfield, Argentina<br>
+					<i class="fa fa-phone fa-lg"></i>: +555 5555 5555<br>
+					<i class="fa fa-fax fa-lg"></i>: +555 5555 5556<br>
+					<i class="fa fa-envelope fa-lg"></i>:<a href="mailto:glevcovich@outlook.com">glevcovich@outlook.com</a>
+				</address>
+				</div>
+				<div class="col-12 col-sm-4 align-self-center">
+					<div class="text-center">
+						<a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+						<a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+						<a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+						<a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+						<a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+						<a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+				</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">             
+				<div class="col-auto">
+					<p>© Copyright 2020 Gustavo Uriel Levcovich</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
-    <header>
-    <!--    <div include-html="htmls/jumbotron.html"></div> -->
-        <div class="jumbotron"> <!-- Header Jumbotron -->
-            <div class="container">
-                <div class="row row-header">
-                    <div class="col-6 align-self-center text-center">
-                        <h1>Todo lo que necesitás saber</h1>
-                        <h1>Para cuidar tu plata</h1>
-                        <h1p>Encontralo acá!!</h1>
-                    </div>
-                    <div class="col-6 col-sm align-self-center">
-                        <img src="https://dummyimage.com/300x300/9675cd/522da8.png&text=$$$" class="img-fluid max150" alt="LOGOLOGO">
-                    </div>
-                    <div class="col-12 col-sm align-self-center">
-                        <button class="btn btn-block nav-link btn-warning font-weight-bold" 
-                            id="RegistrarseButton">Registrate así nos acordamos de vos y te podemos encontrar ahorros
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> 
-
-    <div class="container">
-        <div class="row row-content"> <!-- Carousel -->
-            <div class="col">
-                <div id="carouselOtorgantes" class="carousel" data-ride="carousel" data-interval="1000">
-                    <div class="carousel-inner" id="carouselDentro" role="listbox">
-                        <div class="carousel-item active ">
-                            <a href=".">
-                                <img class="d-block img-fluid"
-                                src="https://dummyimage.com/300x300/9675cd/522da8.png&text=NOSOTROS" alt="Nuestros socios">
-                            </a>
-                            <div class="carousel-caption d-none d-sm-block">
-                                <h2><span class="badge badge-danger">Nosotros, estamos para vos</span></h2>
-                                <p class="d-none d-sm-block">
-                                    Bancos e instituciones financieras con los que trabajamos<br>
-                                    En sólo dos años más, más de 700 días brindando asesoramiento de excelencia<br>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <ol class="carousel-indicators" id="carouselIndicadores">
-                        <li data-target="#carouselOtorgantes" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselOtorgantes" data-slide-to="1"></li>
-                        <li data-target="#carouselOtorgantes" data-slide-to="2"></li>
-                        <li data-target="#carouselOtorgantes" data-slide-to="3"></li>
-                        <li data-target="#carouselOtorgantes" data-slide-to="4"></li>
-                    </ol>
-                    <a class="carousel-control-prev" href="#carouselOtorgantes" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselOtorgantes" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-                    <button class="btn btn-danger btn-sm" id="carouselButton">
-                        <span class="fa fa-pause"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer> <!-- Footer -->
-        <div include-html="htmls/footer.html"></div>
-    </footer>
-
-<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
---> 
-    <script src="./js/jquery-3.6.0.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="./js/funciones.js"></script>
-    <script>
-        includeHTML();
-    </script> 
-    <script src="./js/cargadatos.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/modal.js"></script>
+<!-- SCRIPTS -->
+	<script src="./js/jquery-3.6.0.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="./js/cargaDatos.js"></script>
+	<script src="./js/constTextos.js"></script>
+	<script src="./js/funcionesEnInterfaz.js"></script>
+	<script src="./js/funciones.js"></script>
+	<script src="./js/onLoad.js"></script>
 </body>
 <!-- GUL -->

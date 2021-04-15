@@ -1,20 +1,18 @@
-
-
-// CHEQUEAR SI HAY USUARIO LOGUEADO Y SI LO HAY, CARGAR EN MEMORIA EL USUARIO Y SUS CUENTAS
-function actualizar(){
   // LOCALSTORAGE.CHECKLOGUEADO ES TRUE SI HAY UN USUARIO RECORDADO
   // LOCALSTORAGE.LOGUEADO ES UN STRING DEL EMAIL DEL USUARIO RECORDADO, SI LO HAY
-  if (JSON.parse(localStorage.checkLogueado) === true) {
+
+  function actualizar(){ // CHEQUEAR SI HAY USUARIO LOGUEADO Y SI LO HAY, CARGAR EN LA INTERFAZ SUS DATOS Y SUS CUENTAS
+    if (JSON.parse(localStorage.checkLogueado) === true) {
     usuarioLogueado = JSON.parse(localStorage.usuarios).find(temp  => temp.email === localStorage.logueado);
     cuentasUsuarioLogueado = JSON.parse(localStorage.cuentas);
     cuentasUsuarioLogueado = cuentasUsuarioLogueado.filter((temp)  => temp.dniUsuario == usuarioLogueado.id);
     vaciarUsuario();
     animacionConUsuario();
-    cargarServiciosUsuario(usuarioLogueado);
+    cargarInformaciónUsuario(usuarioLogueado);
     for (const iterator of cuentasUsuarioLogueado) {
-      agregarServiciosUsuario(otorgantes.find(temp  => temp.id === iterator.idOtorgante).descripcion,
-                              tipos_creditos.find(temp  => temp.id === iterator.idTipoCredito).nombre,
-                              tipos_creditos.find(temp  => temp.id === iterator.idTipoCredito).descripcion,
+      agregarServiciosUsuario(tiposCreditos.find(temp  => temp.id === iterator.idTipoCredito).nombre,
+      tiposCreditos.find(temp  => temp.id === iterator.idTipoCredito).descripcion,
+      otorgantes.find(temp  => temp.id === iterator.idOtorgante).descripcion,
                               "Nuestra propuesta generada por AI. La etiqueta es generada random ahora, pero debería ser calculable",
                               parseInt(Math.random() * 50) + "% de ahorro"
                               );
@@ -24,7 +22,6 @@ function actualizar(){
     cuentasUsuarioLogueado = [];
     animacionSinUsuario();
     vaciarUsuario();
-    return false
   }
 }
 
@@ -37,10 +34,18 @@ function seleccionarUsuario(nro){
   localStorage.setItem('checkLogueado', JSON.stringify(true));
   localStorage.setItem('logueado',usuarios[nro].email);
   actualizar(); 
+  irAServiciosUsuario();
 }
 
 function borrarStorage(){
   localStorage.clear();
+/*   tiposCreditos.;
+  otorgantes=[];
+  usuarios=[];
+  cuentas=[];
+  usuarioLogueado=[];
+  cuentasUsuarioLogueado=[];
+ */
   inicializarDatos();
   actualizar();
 }
@@ -49,7 +54,6 @@ function borrarStorage(){
 function funcionLogIn(txtEmail, txtContrasena){
   var txt = "Los emails válidos son:" + "\n";
   var tempUsuario =   usuarios.find(temp  => temp.email === txtEmail);
-  console.log(tempUsuario)
   if (tempUsuario) {
     if ( txtContrasena===tempUsuario.contrasena){
     } else {
