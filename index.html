@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description" content="Comparar tarifas créditos interés seguros plazos fijos plata dinero ahorro">
-	<meta name="keywords"  content="Comparar tarifas créditos interés seguros plazos fijos plata dinero ahorro">
+	<meta name="keywords" content="Comparar tarifas créditos interés seguros plazos fijos plata dinero ahorro">
 	<title>Comparador de créditos</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,8 +16,8 @@
 
 <body>
 
-	<!--    MODAL INGRESAR -->
-	<div id="LogInModal" class="modal fade" role="dialog"> <!-- Ingresar -->
+	<!--	MODAL INGRESAR -->
+	<div id="LogInModal" class="modal " role="dialog"> <!-- Ingresar -->
 		<div class="modal-dialog modal-lg" role="content">
 			<!-- Modal content-->
 			<div class="modal-content">
@@ -26,7 +26,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form>
+					<form id="formLogIn">
 						<div class="form-row">
 							<div class="form-group col-sm-4">
 									<label class="sr-only" for="email" id="logInEmail">E-mail</label>
@@ -38,17 +38,15 @@
 							</div>
 							<div class="col-sm-auto">
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox">
-									<label class="form-check-label"> Recordarme
-									</label>
 									<button type="button" class="btn btn-primary btn-sm ml-auto" id="clearStorage">Borrar localStorage
-										Se vuelve a crear los mismos usuarios con cuentas al azar al refrescar la página.
+										Se vuelve a crear los mismos usuarios con cuentas al refrescar la página.
 									</button>
 								</div>
 							</div>
 						</div>
 						<div class="form-row">
-							<label>No funciona el registro ni el ingreso, seleccione un usuario de los precargados:</label>
+							<label id="labelFormLogIn"></label>
+							<label id="labelFormLogIn2">O seleccione un usuario de los precargados:</label>
 						</div>
 						<div class="form-row">
 							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs00">00</button>
@@ -63,11 +61,11 @@
 							<button type="button" class="btn btn-secondary btn-sm ml-auto" id="bUs09">09</button>
 						</div>
 						<div class="form-row">
-							<label>  </label>
+							<label> </label>
 						</div>
 						<div class="form-row">
 							<button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-primary btn-sm ml-1" id="logInButton">Ingresar</button>        
+							<button type="button" class="btn btn-primary btn-sm ml-1" id="modalLogInButton">Ingresar</button>		
 						</div>
 					</form>
 				</div>
@@ -75,60 +73,105 @@
 		</div>
 	</div>
 
-	<!--    MODAL REGISTRARSE -->
+	<!--	MODAL REGISTRARSE -->
 	<div id="RegistrarseModal" class="modal fade" role="dialog"> <!-- Registrarse -->
 		<div class="modal-dialog modal-lg" role="content">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title font-weight-bold">Registrarse</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<!--	MODAL REGISTRARSE TITULO-->
+			<div class="modal-header">
+				<h5 class="modal-title" id="RegFormTitulo">Registrarse</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+	<!--	MODAL REGISTRARSE BOTONES SELECTOR-->
+			<div class="modal-content container col-12">
+				<div class="row">
+						<button type="button" class="col-4 btn btn-secondary font-weight-bold paginator-button" href="#pageDatosIngreso">
+							Usuario
+						</button>
+						<button type="button" class="col-4 btn btn-secondary font-weight-bold paginator-button" href="#pageDatosPersonales">
+							Mis datos
+						</button>
+						<button type="button" id="RegForm3erBoton" class="col-4 btn btn-secondary font-weight-bold paginator-button disabled" href="#pageServicios">
+							Mis servicios
+						</button>
 				</div>
+				<label id="RegFormPrimeroRegistrarse"></label>
+			</div>
+	<!--	MODAL REGISTRARSE USUARIO Y CONTRASEÑA-->
+			<div class="modal-content paginator paginator-active modal-70" id="pageDatosIngreso">
 				<div class="modal-body">
-					<form>
-						<div  class="form-group form-row align-self-center">
-							<div class="col-12 offset-2">
-									<h4>Datos de ingreso</h4>
-							</div>
-							<div class="form-group form-row">
-									<div class="col-12">
-									<input class="form-control" id="frmEmail" name="frmEmail" placeholder="e-mail">
-								</div>
-								<div class="col-12">
-									<input type="password" class="form-control" id="frmPassword" name="frmPassword" placeholder="Contraseña">
-								</div>
-								<div class="col-12">
-									<input type="password" class="form-control" id="frmVPassword" name="frmVPassword" placeholder="Verificar contraseña">
-								</div>
-							</div>
-							<div class="col-12 offset-2">
-									<h4>Datos personales</h4>
-							</div>
-						</div>
+							Usuario y contraseña
+					<form id="RegFormUsuario">
 						<div class="form-group form-row">
-							<input class="form-control" id="frmApellido" name="frmApellido" placeholder="Apellido">
-							<input class="form-control" id="frmNombres" name="frmNombres" placeholder="Nombres">
-							<select class="form-control" id="selectProvincia" name="selectProvincia" placeholder="Provincia">
-							</select>
-							<select class="form-control" id="selectTrabajo" name="selectTrabajo" placeholder="Ingresos">
-							</select>
-							<input class="form-control" id="frmIngresosSueldo" name="frmIngresosSueldo" placeholder="Ingreso por sueldo en blanco">
-							<input class="form-control" id="frmIngresosAutonomo" name="frmIngresosAutonomo" placeholder="Ingreso promedio como cuentapropista">
-							<input class="form-control" id="frmIngresosNegro" name="frmIngresosNegro" placeholder="Promedio de otros ingresos sin registrar">
-						</div>
-						<div class="form-group form-row">
-							<div class="col-12 offset-2">
-								<button type="cancel" data-dismiss="modal" class="btn btn-secondary font-weight-bold">Cancelar</button>
-								<button type="submit" class="btn btn-primary font-weight-bold">Registrarse</button>
-								<label><input id="frmRegistrarRecordarme" name="frmRegistrarRecordarme" type="checkbox" value="">Recordarme (siempre recuerda por ahora)</label>
+							<div class="col-12">
+							<input class="form-control" id="RegFormEmail" name="RegFormEmail" placeholder="e-mail">
+							</div>
+							<div class="col-12">
+								<input type="password" class="form-control" id="RegFormPassword" name="RegFormPassword" placeholder="Contraseña">
+							</div>
+							<div class="col-12">
+								<input type="password" class="form-control" id="RegFormPassword2" name="RegFormPassword2" placeholder="Verificar contraseña">
+							</div>
+							<div class="col-12">
+								<label class="sr-only" id="RegFormPassMatch"></label>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
+	<!--	MODAL REGISTRARSE DATOS PERSONALES -->
+	<div class="modal-content paginator modal-70" id="pageDatosPersonales">
+		<div class="modal-body">
+					Tus datos personales
+			<form id="RegFormDatosUsuario">
+				<div class="form-group form-row">
+					<input class="form-control" id="RegFormApellido" name="RegFormApellido" placeholder="Apellido">
+					<input class="form-control" id="RegFormNombres" name="RegFormNombres" placeholder="Nombres">
+					<select class="form-control" id="RegFormSProvincia" name="RegFormSProvincia" placeholder="Provincia">
+					</select>
+					<input class="form-control" id="RegFormIngresosSueldo" name="RegFormIngresosSueldo" placeholder="Ingreso por sueldo en blanco">
+					<select class="form-control" id="RegFormSTrabajo" name="RegFormSTrabajo" placeholder="Ingresos">
+					</select>
+					<input class="form-control" id="RegFormIngresosAutonomo" name="RegFormIngresosAutonomo" placeholder="Ingreso promedio como cuentapropista">
+					<input class="form-control" id="RegFormIngresosNegro" name="RegFormIngresosNegro" placeholder="Promedio de otros ingresos sin registrar">
+				</div>
+			</form>
 		</div>
+	</div>
+	<!--	MODAL REGISTRARSE SERVICIOS -->
+	<div class="modal-content paginator modal-70" id="pageServicios">
+		<div class="modal-body">
+					Tus servicios
+			<form id="formServiciosUsuario">
+				<div class="form-group form-row">
+					<input class="form-control" id="1" name="1" placeholder="1">
+					<input class="form-control" id="2" name="2" placeholder="2">
+					<select class="form-control" id="3" name="3" placeholder="3">
+					</select>
+					<select class="form-control" id="4" name="4" placeholder="4">
+					</select>
+					<input class="form-control" id="5" name="6" placeholder="Ingreso por sueldo en blanco">
+					<input class="form-control" id="6" name="6" placeholder="Ingreso promedio como cuentapropista">
+					<input class="form-control" id="7" name="6" placeholder="Promedio de otros ingresos sin registrar">
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--	MODAL REGISTRARSE BOTONES PIE -->
+			<div class="modal-body">
+				<div class="form-group form-row">
+					<div class="col-12 offset-2">
+						<button type="button" data-dismiss="modal" class="btn btn-secondary font-weight-bold">Cancelar</button>
+						<button type="button" id="modarRegistroBotonAceptar" class="btn btn-primary font-weight-bold">Registrarse</button>
+					</div>
+				</div>
+			</div>
+		</div> 
 	</div> 
+</div> 
 
-	<!--    MODAL ANONIMO -->
+	<!--	MODAL ANONIMO -->
 	<div id="AnonimoModal" class="modal fade" role="dialog"> <!-- Registrarse -->
 		<div class="modal-dialog modal-lg" role="content">
 			<div class="modal-content">
@@ -163,7 +206,7 @@
 		</div>
 	</div> 
 
-	<!--    MODAL DISCLAIMER -->
+	<!--	MODAL DISCLAIMER -->
 	<div id="DisclaimerModal" class="modal fade" role="dialog"> <!-- Ingresar -->
 		<div class="modal-dialog modal-lg" role="content">
 			<!-- Modal content-->
@@ -177,9 +220,9 @@
 						<div class="form-row">
 							<div class="form-group col-sm-4">
 									<label class="sr-only">No somos responsables de la información mostrada
-														   Sólo la generamos de acuerdo a la información proporcionada por los Bancos
-														   Y nuestro avanzado algoritmo de procesamiento.
-														   Además, ésto no es más que un simulador :)
+																					Sólo la generamos de acuerdo a la información proporcionada por los Bancos
+																					Y nuestro avanzado algoritmo de procesamiento.
+																					Además, ésto no es más que un simulador :)
 									</label>
 							</div>
 						</div>
@@ -192,7 +235,7 @@
 		</div>
 	</div>
 
-	<!--    MODAL CONDICIONES DE USO -->
+	<!--	MODAL CONDICIONES DE USO -->
 	<div id="CondicionesDeUsoModal" class="modal fade" role="dialog"> <!-- Ingresar -->
 		<div class="modal-dialog modal-lg" role="content">
 			<!-- Modal content-->
@@ -223,32 +266,33 @@
 
 	<header>
 
-		<!--    OBJ NAVBAR -->
+		<!--	OBJ NAVBAR -->
 		<nav class="navbar navbar-dark navbar-expand-sm fixed-top"> <!-- Navbar -->
 			<div class="container">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand mr-auto" href="#"><img src="https://dummyimage.com/300x300/9675cd/522da8.png&text=$$$" height="30" alt="$$$$$"></a>
+				<a class="navbar-brand mr-auto" href="#"><img src="https://dummyimage.com/100x100/9675cd/522da8.png&text=$$$" height="30" alt="$$$$$"></a>
 				<div class="collapse navbar-collapse" id="Navbar">
 					<ul class="navbar-nav mr-auto">
 						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active nav-link" id="navbarItem1"><span class="fa fa-home fa-lg"></span> Home</li>
-							<li class="nav-item  nav-link" id="navbarItem2"><span class="fa fa-server  fa-lg"></span> Servicios</li>
-							<li class="nav-item  nav-link" id="navbarItem3"><span class="fa fa-home fa-lg"></span> Nosotros</li>
-							<li class="nav-item  nav-link" id="navbarItem4"><span class="fa fa-home fa-lg"></span> Contanos algo...</li>
-						</ul>            
+							<li class="nav-item nav-link navbarItem" style="cursor:pointer" id="Home"><span class="fa fa-home fa-lg"></span> Home</li>
+							<li class="nav-item nav-link navbarItem" style="cursor:pointer" id="NuestrosServicios"><span class="fa fa-server fa-lg"></span>Nuestros Servicios</li>
+							<li class="nav-item nav-link navbarItem" style="cursor:pointer" id="ServiciosUsuario" style="display: none"><span class="fa fa-server fa-lg"></span>Tus Servicios</li>
+							<li class="nav-item nav-link navbarItem" style="cursor:pointer" id="Nosotros"><span class="fa fa-home fa-lg"></span> Nosotros</li>
+							<li class="nav-item nav-link navbarItem" style="cursor:pointer" id="Contanos"><span class="fa fa-home fa-lg"></span> Contanos algo...</li>
+						</ul>			
 					</ul>
 					<span class="navbar-text">
 						<a>
-						<span class="fa fa-sign-in" id="LogInButton"> Ingresar!</span> </a>
+						<span class="fa fa-sign-in" style="cursor:pointer" id="LogInButton"> Ingresar!</span> </a>
 					</span>
 				</div>
 			</div>
 		</nav>
 
-		<!--    OBJ JUMBOTRON -->
-			<div class="jumbotron p-5"> <!-- Header Jumbotron -->
+		<!--	OBJ JUMBOTRON -->
+			<div class="jumbotron"> <!-- Header Jumbotron -->
 				<div class="container">
 					<div class="row">
 						<div class="col-4 align-self-center text-center">
@@ -271,18 +315,18 @@
 			</div>
 	</header> 
 
-	<!--    PAGINA PRINCIPAL -->
+	<!--	PAGINA PRINCIPAL -->
 	<div id="seccionHome">
-		<!--    CAROUSEL -->
+		<!--	CAROUSEL -->
 		<div class="container" id="objCarousel">
 			<div class="row row-content"> <!-- Carousel -->
 				<div class="col">
-					<div id="carouselOtorgantes" class="carousel" data-ride="carousel" data-interval="1000">
+					<div id="carouselOtorgantes" class="carousel slide" data-ride="carousel" data-interval="1000">
 						<div class="carousel-inner" id="carouselDentro" role="listbox">
 							<div class="carousel-item active ">
 								<a href=".">
 									<img class="d-block img-fluid"
-									src="https://dummyimage.com/300x300/9675cd/522da8.png&text=NOSOTROS" alt="Nuestros socios">
+									src="https://dummyimage.com/200x200/9675cd/522da8.png&text=NOSOTROS" alt="Nuestros socios">
 								</a>
 								<div class="carousel-caption d-none d-sm-block">
 									<h2><span class="badge badge-success">Nosotros, estamos para vos</span></h2>
@@ -318,7 +362,7 @@
 
 	</div>
 
-	<!--    PAGINA NOSOTROS -->
+	<!--	PAGINA NOSOTROS -->
 	<div id="seccionNosotros" style="display: none"> <!-- Nosotros -->
 		<div class="col col-sm-6 "> <!-- Historia -->
 			<h2>Nuestra Historia</h2>
@@ -359,7 +403,7 @@
 						<div class="card-header" role="tab" id="ceroEncabezado">
 							<h3 class="mb-0">
 								<a data-toggle="collapse" data-target="#cero">
-								Padre de familia<small>  Principal función</small>
+								Padre de familia<small> Principal función</small>
 								</a>
 							</h3>
 						</div>
@@ -373,7 +417,7 @@
 						<div class="card-header" role="tab" id="unoEncabezado">
 							<h3 class="mb-0">
 								<a data-toggle="collapse" data-target="#uno">
-								Servicios en oficinas<small>  Principal dedicación horaria</small>
+								Servicios en oficinas<small> Principal dedicación horaria</small>
 								</a>
 							</h3>
 						</div>
@@ -387,7 +431,7 @@
 						<div class="card-header" role="tab" id="dosEncabezado">
 							<h3 class="mb-0">
 								<a class="collapsed" data-toggle="collapse" data-target="#dos">
-									Estudios judaicos avanzados<small>  Doble turno</small>
+									Estudios judaicos avanzados<small> Doble turno</small>
 								</a>
 							</h3>
 						</div>
@@ -401,7 +445,7 @@
 							<div class="card-header" role="tab" id="tresEncabezado">
 							<h3 class="mb-0">
 								<a class="collapsed" data-toggle="collapse" data-target="#tres">
-								Servicios de sistemas<small>  Casos puntuales</small>
+								Servicios de sistemas<small> Casos puntuales</small>
 								</a>
 							</h3>
 						</div>
@@ -416,7 +460,7 @@
 		</div>
 	</div>
 
-	<!--    PAGINA SERVICIOS USUARIO -->
+	<!--	PAGINA SERVICIOS USUARIO -->
 	<div id="seccionServiciosUsuario" style="display: none"> <!-- Nosotros -->
 		<div class="container"></div> 
 			<div class="row"> 
@@ -433,8 +477,8 @@
 		</div>
 	</div>
 
-	<!--    PAGINA CONTANOS ALGO -->
-	<div id="seccionContanosAlgo" style="display: none">
+	<!--	PAGINA CONTANOS ALGO -->
+	<div id="seccionContanos" style="display: none">
 		<div class="row row-content"> <!-- Información de contacto -->
 			<div class="col-12">
 				<h3>Información de Contacto</h3>
@@ -526,76 +570,76 @@
 		</div>
 	</div>
 
-	<!--    PAGINA SERVICIOS -->
-    <div id="seccionServicios" style="display: none">
-        <div class="row row-content align-items-center"> 
-            <div class="col-12 col-sm-4 col-md-3 order-sm-last">
-                <h3>Propuestas para ahorrar en tus tarjetas</h3>
-            </div>
-            <div class="col col-sm col-md order-sm-first">
-                <div class="media">
-                    <img class="d-flex mr-3 img-thumbnail align-self-center"
-                            src="https://dummyimage.com/300x300/9675cd/522da8.png&text=Buu_Tarjetas" alt="Ahorrate los intereses">
-                    <div class="media-body">
-                        <h2 class="mt-0">Pagá mucho menos de intereses
-                            <span class="badge badge-danger">HOT</span>
-                            <span class="badge badge-pill badge-secondary">Hasta un 50% menos!</span>
-                        </h2>
-                        <p class="d-none d-sm-block">
+	<!--	PAGINA SERVICIOS -->
+	<div id="seccionNuestrosServicios" style="display: none">
+		<div class="row row-content align-items-center"> 
+			<div class="col-12 col-sm-4 col-md-3 order-sm-last">
+				<h3>Propuestas para ahorrar en tus tarjetas</h3>
+			</div>
+			<div class="col col-sm col-md order-sm-first">
+				<div class="media">
+					<img class="d-flex mr-3 img-thumbnail align-self-center"
+							src="https://dummyimage.com/100x100/9675cd/522da8.png&text=Buu_Tarjetas" alt="Ahorrate los intereses">
+					<div class="media-body">
+						<h2 class="mt-0">Pagá mucho menos de intereses
+							<span class="badge badge-danger">HOT</span>
+							<span class="badge badge-pill badge-secondary">Hasta un 50% menos!</span>
+						</h2>
+						<p class="d-none d-sm-block">
 							Te sugerimos opciones para conseguir el dinero y pagar el saldo completo de 
 							las tarjetas. Todas las tarjetas te cobran un interes monstruoso, de los que 
 							nunca terminás de salir. Conseguí el dinero a menos costo, y lo pagás en más
 							cuotas mucho más barato.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row row-content align-items-center">
-            <div class="col-12 col-sm-4 col-md-3">
-                <h3>Tenés asegurado el auto? Tenés seguro en tu vivienda?</h3>
-            </div>
-            <div class="col col-sm col-md">
-                <div class="media">
-                    <img class="d-flex mr-3 img-thumbnail align-self-center order-sm-last"
-                            src="https://dummyimage.com/300x300/9675cd/522da8.png&text=Seguros_Económicos" alt="Seguros Económicos">
-                    <div class="media-body">
-                        <h2 class="mt-0">Los más baratos, que responden!
-                            <span class="badge badge-danger">Actualizado</span>
-                        </h2>
-                        <p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row row-content align-items-center">
+			<div class="col-12 col-sm-4 col-md-3">
+				<h3>Tenés asegurado el auto? Tenés seguro en tu vivienda?</h3>
+			</div>
+			<div class="col col-sm col-md">
+				<div class="media">
+					<img class="d-flex mr-3 img-thumbnail align-self-center order-sm-last"
+							src="https://dummyimage.com/100x100/9675cd/522da8.png&text=Seguros_Económicos" alt="Seguros Económicos">
+					<div class="media-body">
+						<h2 class="mt-0">Los más baratos, que responden!
+							<span class="badge badge-danger">Actualizado</span>
+						</h2>
+						<p>
 							Los seguros de vehículos y de domicilio son de los mejores negocios de los bancos. Podrás comparar 
 							precios de diferentes aseguradoras por la misma cobertura, y también aceder al foro donde otros usuarios
 							comentan si las compañías respondieron como ellos esperaba o no.
 						</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row row-content align-items-center">
-            <div class="col-12 col-sm-4 col-md-3 order-sm-last">
-                <h3>Cambiar el auto, hacer un viaje, arreglar la casa...</h3>
-            </div>
-            <div class="col col-sm col-md order-sm-first">
-                <div class="media">
-                    <img class="d-flex mr-3 img-thumbnail align-self-center"
-                            src="https://dummyimage.com/300x300/9675cd/522da8.png&text=No_TE PRIVES_DE_VIVIR" alt="NO TE PRIVES DE VIVIR">
-                    <div class="media-body">
-                        <h2 class="mt-0">Y si conseguís el dinero con facilidad?</h2>
-                        <h4>Planes transparentes para todos!</h4>
-                        <p class="d-none d-sm-block">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row row-content align-items-center">
+			<div class="col-12 col-sm-4 col-md-3 order-sm-last">
+				<h3>Cambiar el auto, hacer un viaje, arreglar la casa...</h3>
+			</div>
+			<div class="col col-sm col-md order-sm-first">
+				<div class="media">
+					<img class="d-flex mr-3 img-thumbnail align-self-center"
+							src="https://dummyimage.com/100x100/9675cd/522da8.png&text=No_TE PRIVES_DE_VIVIR" alt="NO TE PRIVES DE VIVIR">
+					<div class="media-body">
+						<h2 class="mt-0">Y si conseguís el dinero con facilidad?</h2>
+						<h4>Planes transparentes para todos!</h4>
+						<p class="d-none d-sm-block">
 							Te conseguimos créditos blandos para que puedas comprar lo que siempre quisiste, o viajar a donde soñaste,
 							a tasas más bajas que la inflación. Entrá en la calculadora de créditos, ingresá cuánto necesitás y en
 							cuánto tiempo lo querés pagar.
 						</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<footer> <!-- Footer -->
 		<div class="container">
-			<div class="row">             
+			<div class="row">			 
 				<div class="col-4 col-sm-2 offset-1">
 					<h5>Links</h5>
 					<ul class="list-unstyled">
@@ -626,22 +670,23 @@
 				</div>
 				</div>
 			</div>
-			<div class="row justify-content-center">             
+			<div class="row justify-content-center">			 
 				<div class="col-auto">
-					<p>© Copyright 2020 Gustavo Uriel Levcovich</p>
+					<p>© Copyright 2021 Gustavo Uriel Levcovich</p>
 				</div>
 			</div>
 		</div>
 	</footer>
 
 <!-- SCRIPTS -->
-	<script src="./js/jquery-3.6.0.js"></script>
+	<script src="./js/jq/jquery-3.6.0.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-	<script src="./js/cargaDatos.js"></script>
-	<script src="./js/constTextos.js"></script>
-	<script src="./js/funcionesEnInterfaz.js"></script>
-	<script src="./js/funciones.js"></script>
-	<script src="./js/onLoad.js"></script>
+	<script src="./js/classes.js"></script>
+	<script src="./js/constAndVar.js"></script>
+	<script src="./js/functions.js"></script>
+	<script src="./js/onDocument.js"></script>
+	<script src="./js/inicialization.js"></script>
+	<script src="./js/ready.js"></script>
 </body>
 <!-- GUL -->

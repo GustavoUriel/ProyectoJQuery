@@ -1,8 +1,8 @@
 // CARGAR 4 ENTIDADES EN CARROUSEL
 function cargaCarousel(){
 
-  // CARGA DE DATOS EN EL CARROUSEL
-  // CAMBIAR DINÁMICAMENTE LA CANTIDAD DE INDICADORES. TODAVÍA NO LO HICE
+	// CARGA DE DATOS EN EL CARROUSEL
+	// CAMBIAR DINÁMICAMENTE LA CANTIDAD DE INDICADORES. TODAVÍA NO LO HICE
 	const carousel = document.getElementById("carouselDentro");
 	var carouselItem
 	var carouselA
@@ -13,12 +13,12 @@ function cargaCarousel(){
 
 	//FILTRO EN OTORGANTES LOS QUE TIENEN TRUE EL VALOR SHOWONCAROUSEL
 
-	listaCarouselOtorgantes = otorgantes.filter((temp)  => temp.showOnCarousel);
+	listaCarouselOtorgantes = otorgantes.filter((temp) => temp.showOnCarousel);
+
 
 	// EMPIEZO EL FOR OF
-	for (const item of listaCarouselOtorgantes) {  //cargo las páginas del carousel
-  
-		//  CREO TODAS LAS VARIABLES A USAR
+	for (const item of listaCarouselOtorgantes) { //cargo las páginas del carousel
+		// CREO TODAS LAS VARIABLES A USAR
 		carouselItem = document.createElement("div");
 		carouselA = document.createElement("a");
 		carouselSubDiv= document.createElement("div");
@@ -26,9 +26,9 @@ function cargaCarousel(){
 		carouselP = document.createElement("p");
 		carouselh2Span = document.createElement("span");
 		carouselaImage = document.createElement("img");
-		//  CREO TODO DE ADENTRO PARA AFUERA
+		// CREO TODO DE ADENTRO PARA AFUERA
 
-		//  EL P
+		// EL P
 		carouselP.classList.add("d-none");
 		carouselP.classList.add("d-sm-block");
 		carouselP.textContent = `${item.descripcion}`;
@@ -68,106 +68,95 @@ function cargaCarousel(){
 }
 
 // ESTAS FUNCIONES SON PARA CAMBIAR DE VISTA, DE ACUERDO AL NAVBAR U OTROS COMANDOS
-function ocultarSecciones(){
-	$("#navbarItem1").removeClass("active");
-	$("#navbarItem2").removeClass("active");
-	$("#navbarItem3").removeClass("active");
-	$("#navbarItem4").removeClass("active");
+// Y ALGUNAS VISTAS DEPENDEN DE SI HAY UN USUARIO LOGUEADO O NO
 
-	$("#seccionHome").slideUp("1000");
-	$("#seccionServicios").slideUp("1000");
-	$("#seccionServiciosUsuario").slideUp("1000");
-	$("#seccionNosotros").slideUp("1000");
-	$("#seccionContanosAlgo").slideUp("1000");
+function ocultarSecciones(){
+	for (const iterator of $(".navbarItem")) {
+		iterator.classList.remove("active");
+		$("#seccion"+iterator.id).slideUp("1000");
+	}
 }
-function irAHome(){
-	ocultarSecciones();
-	$("#navbarItem1").addClass('active');
-	$("#seccionHome").slideDown("1000");
+
+function MostrarModalRegistro() {
+	$("#RegistrarseModal").modal('show');
 }
-function irAServicios(){
-	ocultarSecciones();
-	$("#navbarItem2").addClass('active');
-	$("#seccionServicios").slideDown("1000");
+
+function irA(temp){
+	$("#"+temp)[0].classList.add('active');
+	$("#seccion"+temp).slideDown("1000");
+
 }
-function irANosotros(){
-	ocultarSecciones();
-	$("#navbarItem3").addClass('active');
-	$("#seccionNosotros").slideDown("1000");
-} 
-function irAServiciosUsuario(){
-	ocultarSecciones();
-	$("#navbarItem2").addClass('active');
-	$("#seccionServiciosUsuario").slideDown("1000");
-}
-function irAContanos(){  let items =  $("#navbarItem").parent.children;
-	ocultarSecciones();
-	$("#navbarItem4").addClass('active');
-	$("#seccionContanosAlgo").slideDown("1000");
-}  
 
 // ESTAS FUNCIONES SON PARA CAMBIAR LOS BOTONES DE REGISTRO Y LOGIN (Y ANONIMO) DE ACUERDO A SI HAY O NO UN USUARIO LOGUEADO
 function animacionConUsuario(){
-	$("#RegistrarseButton").delay(2000)
-												.slideUp(2000, function() { $("#RegistrarseButton").text("Hola " +
-																									usuarioLogueado.nombre + " " +
-																									usuarioLogueado.apellido) }) 
-												.slideDown(2000);
-	$("#AnonimoButton").slideUp(2000);
+	$("#RegistrarseButton").delay(1000)
+		.slideUp(1000, function() { $("#RegistrarseButton").text("Hola " +
+		usuarioLogueado.nombre + " " + usuarioLogueado.apellido) }) 
+		.slideDown(1000, function() {actualizar_continuarConUsuario()});
+	$("#AnonimoButton").slideUp(1000);
 	$("#LogInButton").text("Salir");
-}
-function animacionSinUsuario(){
-	$("#RegistrarseButton").text($("#RegistrarseButton").text().replace("Hola", "Chau"));
-	$("#RegistrarseButton").delay( 1000 )
-	.slideUp(1000, function() { $("#RegistrarseButton").text (txtMainJumbotronRegistrar) }) 
-	.slideDown(1000);
-	$("#AnonimoButton").slideDown(1000);
-	$("#LogInButton").text("Ingresar!");
+	$("#ServiciosUsuario")[0].style.display = "block";
 }
 
-// ESTAS FUNCIONES SON PARA VACIAR Y CARGAR LA INFORMACION DEL USUARIO Y SUS SERVICIOS ASOCIADOS
-function vaciarUsuario(){
-    while ($("#accordionServiciosUsuario").firstChild) {
-			$("#accordionServiciosUsuario").removeChild($("#accordionServiciosUsuario").firstChild);
-    }
-    while ($("#txtInformacionPersonal").firstChild) {
-			$("#txtInformacionPersonal").removeChild($("#txtInformacionPersonal").firstChild);
-    }
+function animacionSinUsuario(){
+	$("#RegistrarseButton").text($("#RegistrarseButton").text().replace("Hola", "Chau Chau"));
+	$("#RegistrarseButton").delay( 1000 )
+	.slideUp(1000, function() { $("#RegistrarseButton").text (txtMainJumbotronRegistrar) }) 
+	.slideDown(1000, function() {actualizar_continuarSinUsuario()});
+	$("#AnonimoButton").slideDown(1000);
+	$("#LogInButton").text("Ingresar!");
+	$("#ServiciosUsuario")[0].style.display = "none";
 }
+
+// ESTAS FUNCIONES SON PARA VACIAR Y LA INFORMACION DEL USUARIO Y SUS SERVICIOS ASOCIADOS
+function vaciarUsuario(){
+
+	item = $("#acordeonServiciosUsuario").children();
+	for (const iterator of item) {
+		iterator.parentNode.removeChild(iterator);
+	}
+	item = $("#txtInformacionPersonal").children();
+	for (const iterator of item) {
+		iterator.parentNode.removeChild(iterator);
+	}
+	
+}	
+
 function cargarInformaciónUsuario(temp){
 	if (temp.estadoCivil==0) {txtEstadoCivil='no casado/a'} else {txtEstadoCivil='casado/a'}
 	if (temp.tipoDeIngresos==0) {txtEstatal=""}	else {txtEstatal=" (empleo estatal)"}
 	if (temp.casaPropia) {txtCasa=""}	else {txtCasa=" no"}
 	if (temp.vehiculo) {txtAuto=""}	else {txtAuto=" no"}
 	if (temp.ingresosNegro==0) {txtNegro=" y no tenés otros ingresos."}
-	else {txtNegro=` y (Shh, tu secreto está a salvo con nosotros) alrededor de ${temp.ingresosNegro} de ingresos no facturados ni declarados.`}
+	else {txtNegro=` y (Sh!, tu secreto está a salvo con nosotros) alrededor de ${temp.ingresosNegro} de ingresos no facturados ni declarados.`}
 	txtResidencia = temp.ciudad;
 	if (temp.ciudad != "CABA") {txtResidencia = txtResidencia + " en " + temp.provincia}
 	txtTemp =`<h4>
 Vos, ${temp.nombre} ${temp.apellido}, D.N.I.: ${temp.id} te registraste con el email ${temp.email}.
-Vivís en ${temp.ciudad} en ${temp.provincia}, sos ${txtEstadoCivil}.
+Vivís en ${txtResidencia}, sos ${txtEstadoCivil}.
 Actualmente${txtCasa} tenés casa propia y${txtAuto} tenés auto.
-Tus ingresos son ${temp.ingresosSueldo} pesos mensuales${txtEstatal}, ${temp.ingresosAutonomo} por trabajos autónomos facturadas${txtNegro}
-Y estas son las cuentas que nos contaste que tenés</h4>`
-	console.log(txtTemp);
+Tus ingresos son ${temp.ingresosSueldo} pesos mensuales${txtEstatal}, y ${temp.ingresosAutonomo} por trabajos autónomos facturados${txtNegro}
+</h4>`
 	let contenedor = document.createElement("div");
+	contenedor.classList.add("info-descartable");
 	contenedor.innerHTML =txtTemp;
 	$("#txtInformacionPersonal").prepend(contenedor)
 }
-function cargarServiciosUsuario(titulo, titulo2, descripcion, propuesta, etiqueta){
+
+function agregarServiciosUsuario(titulo, titulo2, descripcion, propuesta, etiqueta){
 	if (etiqueta) {
 		etiqueta = `<span class="badge badge-danger">${etiqueta}</span>`
 	}
 	let contenedor = document.createElement("div");
 	contenedor.classList.add("card");
-	contenedor.innerHTML = `<div class="card-header" role="tab" id="ceroEncabezado">
+	contenedor.innerHTML = `<div class="card-header info-descartable" role="tab" id="ceroEncabezado">
 														<h3 class="mb-0">
 															<p data-toggle="collapse" data-target="#cero">
 																${titulo}, ${titulo2}
 															</p>
 														</h3>
 													</div>
-													<div class="collapse show" id="cero" data-parent="#accordion">
+													<div class="collapse show" id="cero" data-parent="#acordeon">
 														<div class="card-body">
 															<p class="">${descripcion}</p>
 															${etiqueta}
@@ -175,5 +164,16 @@ function cargarServiciosUsuario(titulo, titulo2, descripcion, propuesta, etiquet
 														</div>
 													</div>
 													`;
-$("#accordionServiciosUsuario").prepend(contenedor);
+$("#acordeonServiciosUsuario").prepend(contenedor);
+}
+
+function cerrarModales() {
+	$('.modal').modal('hide');
+	$("#labelFormLogIn").text("");
+}
+
+function deshabilitarBotones(valor){
+	documentoClickable = !(valor);
+	$("#RegistrarseButton").prop('disabled', valor);
+	$("#AnonimoButton").prop('disabled', valor);
 }

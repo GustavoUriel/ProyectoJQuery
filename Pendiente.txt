@@ -1,0 +1,12 @@
+Consultas que tengo:
+
+* Los botones del navbar y los del ingreso de usuario, que sea automático de acuerdo al índice, no que lo tenga que hacer por cada uno. (Creo que eso es porque me perdí el after que hicieron el carrito de compras)
+
+* Además, no puedo registrar usuarios ni hacer log in porque no puedo acceder al contenido de los input de los modales desde el código.
+
+Necesito hacer funcionar eso para hacer un formulario para que el ususario cargue las tarjetas que tiene, y demás cuentas, y también que pueda borrarlas.
+
+* Decime POR FAVOR tus ideas y sugerencias!!
+
+
+Además, ya sé que repetiste muchas veces en la clase que no hay una única manera de hacer las cosas, pero quiero que me digas si está bien la estructura del código, la documentación en los comentarios, etc, de acuerdo a lo que se maneja en la industria. Ya que voy a aprender e incorporar una manera, quiero que sea la más conveniente
