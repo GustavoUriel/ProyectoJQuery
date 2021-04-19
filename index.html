@@ -11,7 +11,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
-	<link href="css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css">
+
 </head>
 
 <body>
@@ -74,102 +75,97 @@
 	</div>
 
 	<!--	MODAL REGISTRARSE -->
-	<div id="RegistrarseModal" class="modal fade" role="dialog"> <!-- Registrarse -->
+	<div id="RegistrarseModal" class="modal" role="dialog"> <!-- Registrarse -->
 		<div class="modal-dialog modal-lg" role="content">
-	<!--	MODAL REGISTRARSE TITULO-->
-			<div class="modal-header">
-				<h5 class="modal-title" id="RegFormTitulo">Registrarse</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-	<!--	MODAL REGISTRARSE BOTONES SELECTOR-->
-			<div class="modal-content container col-12">
-				<div class="row">
-						<button type="button" class="col-4 btn btn-secondary font-weight-bold paginator-button" href="#pageDatosIngreso">
-							Usuario
-						</button>
-						<button type="button" class="col-4 btn btn-secondary font-weight-bold paginator-button" href="#pageDatosPersonales">
-							Mis datos
-						</button>
-						<button type="button" id="RegForm3erBoton" class="col-4 btn btn-secondary font-weight-bold paginator-button disabled" href="#pageServicios">
-							Mis servicios
-						</button>
+			<div class="modal-content">
+			<!--	MODAL REGISTRARSE TITULO-->
+				<div class="modal-header">
+					<h5 class="modal-title" id="RegFormTitulo">Registrarse</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</button>
 				</div>
-				<label id="RegFormPrimeroRegistrarse"></label>
-			</div>
-	<!--	MODAL REGISTRARSE USUARIO Y CONTRASEÑA-->
-			<div class="modal-content paginator paginator-active modal-70" id="pageDatosIngreso">
+			<!--	MODAL REGISTRARSE BOTONES SELECTOR-->
+				<ul class="nav nav-tabs" id="modalRegTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#tabDatosIngreso" role="tab" aria-controls="tabDatosIngreso" aria-selected="true">Usuario</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabDatosPersonales" role="tab" aria-controls="tabDatosPersonales" aria-selected="false">Mis datos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#tabServicios" role="tab" aria-controls="tabServicios" aria-selected="false">Mis servicios</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+			<!--	MODAL REGISTRARSE USUARIO Y CONTRASEÑA-->
+					<div class="tab-pane fade show active modal-body modal-70" id="tabDatosIngreso" role="tabpanel" aria-labelledby="home-tab">
+						Usuario y contraseña
+						<form id="RegFormUsuario">
+							<div class="form-group form-row">
+								<div class="col-12">
+									<input type="email" id="RegFormEmail" name="RegFormEmail" placeholder="e-mail">
+								</div>
+								<div class="col-12">
+									<input type="password" class="form-control" id="RegFormPassword" name="RegFormPassword" placeholder="Contraseña">
+								</div>
+								<div class="col-12">
+									<input type="password" class="form-control" id="RegFormPassword2" name="RegFormPassword2" placeholder="Verificar contraseña">
+								</div>
+								<div class="col-12">
+									<label class="sr-only" id="RegFormPassMatch"></label>
+								</div>
+							</div>
+						</form>
+					</div>
+			<!--	MODAL REGISTRARSE DATOS PERSONALES -->
+					<div class="tab-pane fade modal-body modal-70" id="tabDatosPersonales" role="tabpanel" aria-labelledby="profile-tab">
+							Tus datos personales
+						<form id="RegFormDatosUsuario">
+							<div class="form-group form-row">
+								<input class="form-control" id="RegFormApellido" name="RegFormApellido" placeholder="Apellido">
+								<input class="form-control" id="RegFormNombres" name="RegFormNombres" placeholder="Nombres">
+								<select class="form-control" id="RegFormSProvincia" name="RegFormSProvincia" placeholder="Provincia">
+								</select>
+								<input class="form-control" id="RegFormIngresosSueldo" name="RegFormIngresosSueldo" placeholder="Ingreso por sueldo en blanco">
+								<select class="form-control" id="RegFormSTrabajo" name="RegFormSTrabajo" placeholder="Ingresos">
+								</select>
+								<input class="form-control" id="RegFormIngresosAutonomo" name="RegFormIngresosAutonomo" placeholder="Ingreso promedio como cuentapropista">
+								<input class="form-control" id="RegFormIngresosNegro" name="RegFormIngresosNegro" placeholder="Promedio de otros ingresos sin registrar">
+							</div>
+						</form>
+					</div>
+			<!--	MODAL REGISTRARSE SERVICIOS -->
+					<div class="tab-pane fade modal-body modal-70" id="tabServicios" role="tabpanel" aria-labelledby="contact-tab">
+							Tus servicios
+						<form id="formServiciosUsuario">
+							<div class="form-group form-row">
+								<input class="form-control" id="1" name="1" placeholder="1">
+								<input class="form-control" id="2" name="2" placeholder="2">
+								<select class="form-control" id="3" name="3" placeholder="3">
+								</select>
+								<select class="form-control" id="4" name="4" placeholder="4">
+								</select>
+								<input class="form-control" id="5" name="6" placeholder="Ingreso por sueldo en blanco">
+								<input class="form-control" id="6" name="6" placeholder="Ingreso promedio como cuentapropista">
+								<input class="form-control" id="7" name="6" placeholder="Promedio de otros ingresos sin registrar">
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--	MODAL REGISTRARSE BOTONES PIE -->
 				<div class="modal-body">
-							Usuario y contraseña
-					<form id="RegFormUsuario">
-						<div class="form-group form-row">
-							<div class="col-12">
-							<input class="form-control" id="RegFormEmail" name="RegFormEmail" placeholder="e-mail">
-							</div>
-							<div class="col-12">
-								<input type="password" class="form-control" id="RegFormPassword" name="RegFormPassword" placeholder="Contraseña">
-							</div>
-							<div class="col-12">
-								<input type="password" class="form-control" id="RegFormPassword2" name="RegFormPassword2" placeholder="Verificar contraseña">
-							</div>
-							<div class="col-12">
-								<label class="sr-only" id="RegFormPassMatch"></label>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-	<!--	MODAL REGISTRARSE DATOS PERSONALES -->
-	<div class="modal-content paginator modal-70" id="pageDatosPersonales">
-		<div class="modal-body">
-					Tus datos personales
-			<form id="RegFormDatosUsuario">
-				<div class="form-group form-row">
-					<input class="form-control" id="RegFormApellido" name="RegFormApellido" placeholder="Apellido">
-					<input class="form-control" id="RegFormNombres" name="RegFormNombres" placeholder="Nombres">
-					<select class="form-control" id="RegFormSProvincia" name="RegFormSProvincia" placeholder="Provincia">
-					</select>
-					<input class="form-control" id="RegFormIngresosSueldo" name="RegFormIngresosSueldo" placeholder="Ingreso por sueldo en blanco">
-					<select class="form-control" id="RegFormSTrabajo" name="RegFormSTrabajo" placeholder="Ingresos">
-					</select>
-					<input class="form-control" id="RegFormIngresosAutonomo" name="RegFormIngresosAutonomo" placeholder="Ingreso promedio como cuentapropista">
-					<input class="form-control" id="RegFormIngresosNegro" name="RegFormIngresosNegro" placeholder="Promedio de otros ingresos sin registrar">
-				</div>
-			</form>
-		</div>
-	</div>
-	<!--	MODAL REGISTRARSE SERVICIOS -->
-	<div class="modal-content paginator modal-70" id="pageServicios">
-		<div class="modal-body">
-					Tus servicios
-			<form id="formServiciosUsuario">
-				<div class="form-group form-row">
-					<input class="form-control" id="1" name="1" placeholder="1">
-					<input class="form-control" id="2" name="2" placeholder="2">
-					<select class="form-control" id="3" name="3" placeholder="3">
-					</select>
-					<select class="form-control" id="4" name="4" placeholder="4">
-					</select>
-					<input class="form-control" id="5" name="6" placeholder="Ingreso por sueldo en blanco">
-					<input class="form-control" id="6" name="6" placeholder="Ingreso promedio como cuentapropista">
-					<input class="form-control" id="7" name="6" placeholder="Promedio de otros ingresos sin registrar">
-				</div>
-			</form>
-		</div>
-	</div>
-	<!--	MODAL REGISTRARSE BOTONES PIE -->
-			<div class="modal-body">
-				<div class="form-group form-row">
-					<div class="col-12 offset-2">
-						<button type="button" data-dismiss="modal" class="btn btn-secondary font-weight-bold">Cancelar</button>
-						<button type="button" id="modarRegistroBotonAceptar" class="btn btn-primary font-weight-bold">Registrarse</button>
+					<div class="modal-body col-12 align-items-end">
+						<label id="labelModalRegMensaje"> </label>
+						<form class="offset-5">
+							<button type="button" data-dismiss="modal" class="btn btn-secondary font-weight-bold">Cancelar</button>
+							<button type="button" id="RegFormBotonAceptar" class="btn btn-primary font-weight-bold">Siguiente</button>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div> 
 	</div> 
-</div> 
+
 
 	<!--	MODAL ANONIMO -->
 	<div id="AnonimoModal" class="modal fade" role="dialog"> <!-- Registrarse -->
@@ -685,8 +681,22 @@
 	<script src="./js/classes.js"></script>
 	<script src="./js/constAndVar.js"></script>
 	<script src="./js/functions.js"></script>
+	<script src="./js/registrationModal.js"></script>
+	<script src="./js/events.js"></script>
 	<script src="./js/onDocument.js"></script>
+	<script src="./js/onData.js"></script>
 	<script src="./js/inicialization.js"></script>
 	<script src="./js/ready.js"></script>
+
+<!-- estos 3 abajo -->
+	<script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js"></script>
+
+	<script>
+
+	
+					</script>
+
 </body>
 <!-- GUL -->

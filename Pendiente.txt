@@ -1,12 +1,33 @@
-Consultas que tengo:
-
-* Los botones del navbar y los del ingreso de usuario, que sea automático de acuerdo al índice, no que lo tenga que hacer por cada uno. (Creo que eso es porque me perdí el after que hicieron el carrito de compras)
-
-* Además, no puedo registrar usuarios ni hacer log in porque no puedo acceder al contenido de los input de los modales desde el código.
-
-Necesito hacer funcionar eso para hacer un formulario para que el ususario cargue las tarjetas que tiene, y demás cuentas, y también que pueda borrarlas.
-
-* Decime POR FAVOR tus ideas y sugerencias!!
+Consultas:
 
 
-Además, ya sé que repetiste muchas veces en la clase que no hay una única manera de hacer las cosas, pero quiero que me digas si está bien la estructura del código, la documentación en los comentarios, etc, de acuerdo a lo que se maneja en la industria. Ya que voy a aprender e incorporar una manera, quiero que sea la más conveniente
+
+Pendiente.
+modal registro:
+Aviso falta carga de datos personales
+Activar boton 3er pagina si usuario registrado
+Abrir modal con datos cargados para modificar datos de usuario o servicios contratados
+
+Listado de servicios contratados
+Ofrecer borrar o agregar servicios contratados desde ahi
+Hacer más pequeños los renglones
+
+Listado de nuestros servicios:
+Hacer más pequeños en renglones
+Agregar servicios
+
+navbar
+agregar submenu de seguros, etc...
+
+carousel
+Automático de indicadores abajo
+Máximo de 7 otorgantes
+
+footer
+Revisar todo, que es viejo
+
+Orden y estetica del código
+cambiar " por ' en toda la app
+Estandarizar variables con "palabra_palabra"
+Pasar nombres de variables y funciones a inglés
+reordenar los js con operaciones sobre los datos y quitar funciones de events
