@@ -1,12 +1,12 @@
-	// LOCALSTORAGE.CHECKLOGUEADO ES TRUE SI HAY UN USUARIO RECORDADO
-	// LOCALSTORAGE.LOGUEADO ES UN STRING DEL EMAIL DEL USUARIO RECORDADO, SI LO HAY
+	// localStorage.checkLogueado ES TRUE SI HAY UN USUARIO RECORDADO
+	// localStorage.usuarioLogueado ES UN STRING DEL EMAIL DEL USUARIO RECORDADO, SI LO HAY
 
 	function actualizar(){ // CHEQUEAR SI HAY USUARIO LOGUEADO Y SI LO HAY, CARGAR EN LA INTERFAZ SUS DATOS Y SUS CUENTAS
 		deshabilitarBotones(true);
 		if (JSON.parse(localStorage.checkLogueado) === true) {
 		usuarioLogueado = usuarios.find(temp	=> temp.email === localStorage.usuarioLogueado);
 		cuentasUsuarioLogueado = JSON.parse(localStorage.cuentas);
-		cuentasUsuarioLogueado = cuentasUsuarioLogueado.filter((temp)	=> temp.dniUsuario == usuarioLogueado.id);
+		cuentasUsuarioLogueado = cuentasUsuarioLogueado.filter((temp)	=> temp.idUsuario == usuarioLogueado.id);
 		vaciarUsuario();
 		animacionConUsuario();
 	} else {
@@ -63,12 +63,3 @@ function borrarTodo(){
 
 
 
-
-
-function RegFormAvisoContrasena(){
-
-}
-
-function RegFormValidate (){
-
-}

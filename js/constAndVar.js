@@ -9,7 +9,7 @@ const JSONtiposCreditos = "./json/tiposCreditos.json"
 const JSONotorgantes = "./json/otorgantes.json"
 const JSONusuarios = "./json/usuarios.json"
 const JSONcuentas = "./json/cuentas.json"
-
+const constSpeed = 200;
 
 var tiposCreditos = [] // ARRAY DE TIPOS DE CREDITO
 var otorgantes = [] // ARRAY DE OTORGANTES

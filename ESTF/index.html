@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="css/milligram.css">
+    <title>Simulador Clase 10 - CoderHouse</title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="row">
+      <h2>SIMULADOR DE REGISTRO DE TAREAS</h2>
+    </div>
+    <div class="row">
+      <div class="column column-25">
+        <h5>AGENDAR TAREA</h5>
+      </div>
+      <div class="column column-25">
+        <button id="btnEnviar" class="button-outline">GUARDAR</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column-25">
+        <label for="tituloTarea">Titulo de Tarea</label>
+        <input type="text" placeholder="TITULO DE LA TAREA" id="tituloTarea">
+      </div>
+      <div class="column column-25">
+        <label for="tipoTarea">Tipo de Tarea</label>
+        <select id="tipoTarea">          
+        </select>
+      </div>
+      <div id="generarFiltro" class="column column-25 column-offset-25">
+        <label for="tipoTarea">Filtrar</label>
+        <select id="tipoTarea">          
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column-50">
+        <textarea placeholder="DESCRIPCIÓN DE LA TAREA" id="descripcionTarea"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <table id="tablaTareas">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>TIPO</th>
+            <th>DESCRIPCION</th>
+            <th>FECHA</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <!-- SCRIPTS JS -->
+    <script src="js\data.js"></script>
+    <script src="js\main.js"></script>
+  </body>
+</html>

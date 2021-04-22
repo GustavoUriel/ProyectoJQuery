@@ -21,6 +21,7 @@ $(function(){
 		if (usuarioLogueado) {
 			salirDeLaCuenta();
 			irA("Home");
+			console.log("irahome");
 		}
 		else {
 			$("#LogInModal").modal('show');
@@ -37,11 +38,20 @@ $(function(){
 		}
 	});
 
+	$("#AnonimoButton").on('click', function(){
+		if (usuarioLogueado) {
+			MostrarModalRegistro();
+		}
+		else {
+			alert("todavía no implementado");
+		}
+	});
+
+
 	$(".navbarItem").on('click', function(item){
 		item.preventDefault();
 		item.stopPropagation();
 		item.stopImmediatePropagation();
-		ocultarSecciones();
 		irA(item.target.id);
 	} )
 
@@ -100,7 +110,7 @@ $(function(){
 			seleccionarUsuario(tempfind.email);
 			cerrarModales();
 		} else {
-			var tempText = "La contraseña es: "+ tempfind.contrasena;
+			var tempText = "(cheatmode) La contraseña es: "+ tempfind.contrasena;
 			$("#labelFormLogIn").text(tempText)
 		}
 	}

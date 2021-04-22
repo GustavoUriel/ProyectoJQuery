@@ -73,7 +73,7 @@ function cargaCarousel(){
 function ocultarSecciones(){
 	for (const iterator of $(".navbarItem")) {
 		iterator.classList.remove("active");
-		$("#seccion"+iterator.id).slideUp("1000");
+		$("#seccion"+iterator.id).slideUp("constSpeed");
 	}
 }
 
@@ -82,28 +82,30 @@ function MostrarModalRegistro() {
 }
 
 function irA(temp){
+	ocultarSecciones();
 	$("#"+temp)[0].classList.add('active');
-	$("#seccion"+temp).slideDown("1000");
-
+	$("#seccion"+temp).slideDown("constSpeed");
 }
 
 // ESTAS FUNCIONES SON PARA CAMBIAR LOS BOTONES DE REGISTRO Y LOGIN (Y ANONIMO) DE ACUERDO A SI HAY O NO UN USUARIO LOGUEADO
 function animacionConUsuario(){
-	$("#RegistrarseButton").delay(1000)
-		.slideUp(1000, function() { $("#RegistrarseButton").text("Hola " +
-		usuarioLogueado.nombre + " " + usuarioLogueado.apellido) }) 
-		.slideDown(1000, function() {actualizar_continuarConUsuario()});
-	$("#AnonimoButton").slideUp(1000);
-	$("#LogInButton").text("Salir");
+	$("#RegistrarseButton").delay(constSpeed)
+		.slideUp(constSpeed, function() { $("#RegistrarseButton").text("Hola " +
+		usuarioLogueado.nombre + " " + usuarioLogueado.apellido)}) 
+		.slideDown(constSpeed, function() {
+		$("#AnonimoButton").slideUp(constSpeed, function() { $("#AnonimoButton").text("Modificar mis datos")}) 
+		.slideDown(constSpeed, function() {actualizar_continuarConUsuario()});});
+		$("#LogInButton").text("Salir");
 	$("#ServiciosUsuario")[0].style.display = "block";
 }
 
 function animacionSinUsuario(){
 	$("#RegistrarseButton").text($("#RegistrarseButton").text().replace("Hola", "Chau Chau"));
-	$("#RegistrarseButton").delay( 1000 )
-	.slideUp(1000, function() { $("#RegistrarseButton").text (txtMainJumbotronRegistrar) }) 
-	.slideDown(1000, function() {actualizar_continuarSinUsuario()});
-	$("#AnonimoButton").slideDown(1000);
+	$("#RegistrarseButton").delay( constSpeed )
+	.slideUp(constSpeed, function() { $("#RegistrarseButton").text(txtMainJumbotronRegistrar)}) 
+	.slideDown(constSpeed, function() {
+	$("#AnonimoButton").slideUp(constSpeed, function() { $("#AnonimoButton").text("Entrada anónima")}) 
+	.slideDown(constSpeed, function() {actualizar_continuarSinUsuario()});});
 	$("#LogInButton").text("Ingresar!");
 	$("#ServiciosUsuario")[0].style.display = "none";
 }
@@ -177,3 +179,23 @@ function deshabilitarBotones(valor){
 	$("#RegistrarseButton").prop('disabled', valor);
 	$("#AnonimoButton").prop('disabled', valor);
 }
+
+
+
+
+
+
+
+
+
+
+function generarSalida(listadoTareas){
+	let body = document.getElementById("tablaTareas").children[1];
+	let inner = "";
+	for (const tarea of listadoTareas) {
+	  inner += `<tr><td>${tarea.id}</td><td>${tarea.titulo}</td><td>${tarea.tipo}</td><td>${tarea.descripcion}</td><td>${tarea.fecha.getDate()}/${tarea.fecha.getMonth() + 1}/${tarea.fecha.getFullYear()}</td></tr>`;
+	}
+	body.innerHTML = inner;
+  }
+  
+  
