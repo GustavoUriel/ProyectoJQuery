@@ -2,10 +2,9 @@
 $(function(){
 
 	// CARGAR DATOS DE EJEMPLO, Y ALGUNOS ALEATORIOS
-
 	documentoClickable=false;
 	inicializarDatos();
-	actualizar();
+
 //	MostrarModalRegistro(); //SOLO PARA DEBUG
 	// CARGA EN CARROUSEL 4 ENTIDADES ALEATORIAS (POR AHORA)
 	cargaCarousel();

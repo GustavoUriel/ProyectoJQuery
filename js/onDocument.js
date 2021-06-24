@@ -13,11 +13,11 @@ function cargaCarousel(){
 
 	//FILTRO EN OTORGANTES LOS QUE TIENEN TRUE EL VALOR SHOWONCAROUSEL
 
-	listaCarouselOtorgantes = otorgantes.filter((temp) => temp.showOnCarousel);
+	listaCarouselOtorgantes = otorgantes.filter((iterator) => iterator.showOnCarousel);
 
 
 	// EMPIEZO EL FOR OF
-	for (const item of listaCarouselOtorgantes) { //cargo las páginas del carousel
+	for (const iterator of listaCarouselOtorgantes) { //cargo las páginas del carousel
 		// CREO TODAS LAS VARIABLES A USAR
 		carouselItem = document.createElement("div");
 		carouselA = document.createElement("a");
@@ -31,11 +31,11 @@ function cargaCarousel(){
 		// EL P
 		carouselP.classList.add("d-none");
 		carouselP.classList.add("d-sm-block");
-		carouselP.textContent = `${item.descripcion}`;
+		carouselP.textContent = `${iterator.descripcion}`;
 		// EL H
 		carouselh2Span.classList.add("badge");
 		carouselh2Span.classList.add("badge-info");
-		carouselh2Span.textContent = `${item.nombre}`;
+		carouselh2Span.textContent = `${iterator.nombre}`;
 		carouselH2.appendChild(carouselh2Span);
 		// EL SUBCONTENEDOR
 		carouselSubDiv.classList.add("carousel-caption");
@@ -48,8 +48,8 @@ function cargaCarousel(){
 		// LA IMAGEN
 		carouselaImage.classList.add("d-block");
 		carouselaImage.classList.add("img-fluid");
-		carouselaImage.src = `${item.imagen}`;
-		carouselaImage.alt = `${item.nombre}`;
+		carouselaImage.src = `${iterator.imagen}`;
+		carouselaImage.alt = `${iterator.nombre}`;
 		// EL A
 		carouselA.href = ".";
 		// ARMO EL A
@@ -81,10 +81,10 @@ function MostrarModalRegistro() {
 	$("#RegistrarseModal").modal('show');
 }
 
-function irA(temp){
+function irA(parameter){
 	ocultarSecciones();
-	$("#"+temp)[0].classList.add('active');
-	$("#seccion"+temp).slideDown("constSpeed");
+	$("#"+parameter)[0].classList.add('active');
+	$("#seccion"+parameter).slideDown("constSpeed");
 }
 
 // ESTAS FUNCIONES SON PARA CAMBIAR LOS BOTONES DE REGISTRO Y LOGIN (Y ANONIMO) DE ACUERDO A SI HAY O NO UN USUARIO LOGUEADO
@@ -112,7 +112,6 @@ function animacionSinUsuario(){
 
 // ESTAS FUNCIONES SON PARA VACIAR Y LA INFORMACION DEL USUARIO Y SUS SERVICIOS ASOCIADOS
 function vaciarUsuario(){
-
 	item = $("#acordeonServiciosUsuario").children();
 	for (const iterator of item) {
 		iterator.parentNode.removeChild(iterator);
@@ -121,23 +120,22 @@ function vaciarUsuario(){
 	for (const iterator of item) {
 		iterator.parentNode.removeChild(iterator);
 	}
-	
+
 }	
 
-function cargarInformaciónUsuario(temp){
-	if (temp.estadoCivil==0) {txtEstadoCivil='no casado/a'} else {txtEstadoCivil='casado/a'}
-	if (temp.tipoDeIngresos==0) {txtEstatal=""}	else {txtEstatal=" (empleo estatal)"}
-	if (temp.casaPropia) {txtCasa=""}	else {txtCasa=" no"}
-	if (temp.vehiculo) {txtAuto=""}	else {txtAuto=" no"}
-	if (temp.ingresosNegro==0) {txtNegro=" y no tenés otros ingresos."}
-	else {txtNegro=` y (Sh!, tu secreto está a salvo con nosotros) alrededor de ${temp.ingresosNegro} de ingresos no facturados ni declarados.`}
-	txtResidencia = temp.ciudad;
-	if (temp.ciudad != "CABA") {txtResidencia = txtResidencia + " en " + temp.provincia}
+function cargarInformaciónUsuario(parameter){
+	if (parameter.tipoDeIngresos==0) {txtEstatal=""}	else {txtEstatal="(empleo estatal)"}
+	if (parameter.casaPropia) {txtCasa=""}	else {txtCasa=" no"}
+	if (parameter.vehiculo) {txtAuto=""}	else {txtAuto=" no"}
+	if (parameter.ingresosNegro==0) {txtNegro=" y no tenés otros ingresos."}
+	else {txtNegro=`y (Sh!, tu secreto está a salvo con nosotros) alrededor de ${parameter.ingresosNegro} de ingresos no facturados ni declarados.`}
+	txtResidencia = parameter.ciudad;
+	if (parameter.ciudad != "CABA") {txtResidencia = txtResidencia + " en " + parameter.provincia}
 	txtTemp =`<h4>
-Vos, ${temp.nombre} ${temp.apellido}, D.N.I.: ${temp.id} te registraste con el email ${temp.email}.
-Vivís en ${txtResidencia}, sos ${txtEstadoCivil}.
-Actualmente${txtCasa} tenés casa propia y${txtAuto} tenés auto.
-Tus ingresos son ${temp.ingresosSueldo} pesos mensuales${txtEstatal}, y ${temp.ingresosAutonomo} por trabajos autónomos facturados${txtNegro}
+Hola ${parameter.nombre} ${parameter.apellido}, vos te registraste con el email: ${parameter.email}. <br>
+Pronto tendremos tips y consejos para aprovechar tu dinero, específicamente en tu ciudad, en ${txtResidencia}. <br>
+Como sabemos que ${txtCasa} tenés casa propia y${txtAuto} tenés auto, vamos a seleccionar nuestras propuestas a lo que más te convenga. <br>
+Tus ingresos son ${parameter.ingresosSueldo} pesos mensuales ${txtEstatal}, y ${parameter.ingresosAutonomo} por trabajos autónomos facturados ${txtNegro}
 </h4>`
 	let contenedor = document.createElement("div");
 	contenedor.classList.add("info-descartable");
@@ -145,27 +143,26 @@ Tus ingresos son ${temp.ingresosSueldo} pesos mensuales${txtEstatal}, y ${temp.i
 	$("#txtInformacionPersonal").prepend(contenedor)
 }
 
-function agregarServiciosUsuario(titulo, titulo2, descripcion, propuesta, etiqueta){
-	if (etiqueta) {
-		etiqueta = `<span class="badge badge-danger">${etiqueta}</span>`
-	}
+function agregarServiciosUsuario(parameter){
+
 	let contenedor = document.createElement("div");
 	contenedor.classList.add("card");
-	contenedor.innerHTML = `<div class="card-header info-descartable" role="tab" id="ceroEncabezado">
-														<h3 class="mb-0">
-															<p data-toggle="collapse" data-target="#cero">
-																${titulo}, ${titulo2}
-															</p>
-														</h3>
+	contenedor.innerHTML = `
+												<div class="card-header info-descartable row" id="head${parameter.id}" role="tab">
+												<p data-toggle="collapse" data-target="#body${parameter.id}" class="col-10">
+													Otorgante: ${otorgantes.find(iterator	=> iterator.id === parameter.idOtorgante).descripcion} <br>
+													Tipo de servicio: ${tiposCreditos.find(iterator	=> iterator.id === parameter.idTipoCredito).nombre} <br>
+													Explicación:  ${tiposCreditos.find(iterator	=> iterator.id === parameter.idTipoCredito).descripcion} <br>
+												</p>
+												<button type="button" class="btn btn-secondary font-weight-bold col-2 buttonDeleteService" id="servicio${parameter.id}">Eliminar</button>
+												</div>
+												<div class="collapse show info-descartable row" id="body${parameter.id}" data-parent="#acordeon">
+													<div class="card-body">
+													<span class="badge badge-danger">${parseInt(Math.random() * 50)} % de ahorro</span>
+														<p class="">Nuestra propuesta generada por AI. La etiqueta es generada random ahora, pero debería ser calculable</p>
 													</div>
-													<div class="collapse show" id="cero" data-parent="#acordeon">
-														<div class="card-body">
-															<p class="">${descripcion}</p>
-															${etiqueta}
-															<p class="">${propuesta}</p>
-														</div>
-													</div>
-													`;
+												</div>
+												`;
 $("#acordeonServiciosUsuario").prepend(contenedor);
 }
 
@@ -174,28 +171,12 @@ function cerrarModales() {
 	$("#labelFormLogIn").text("");
 }
 
-function deshabilitarBotones(valor){
-	documentoClickable = !(valor);
-	$("#RegistrarseButton").prop('disabled', valor);
-	$("#AnonimoButton").prop('disabled', valor);
+function deshabilitarBotones(parameter){
+	documentoClickable = !(parameter);
+	$("#RegistrarseButton").prop('disabled', parameter);
+	$("#AnonimoButton").prop('disabled', parameter);
 }
 
 
 
 
-
-
-
-
-
-
-function generarSalida(listadoTareas){
-	let body = document.getElementById("tablaTareas").children[1];
-	let inner = "";
-	for (const tarea of listadoTareas) {
-	  inner += `<tr><td>${tarea.id}</td><td>${tarea.titulo}</td><td>${tarea.tipo}</td><td>${tarea.descripcion}</td><td>${tarea.fecha.getDate()}/${tarea.fecha.getMonth() + 1}/${tarea.fecha.getFullYear()}</td></tr>`;
-	}
-	body.innerHTML = inner;
-  }
-  
-  

@@ -21,12 +21,17 @@ $(function(){
 		if (usuarioLogueado) {
 			salirDeLaCuenta();
 			irA("Home");
-			console.log("irahome");
 		}
 		else {
 			$("#LogInModal").modal('show');
 		}
 	});
+
+		// CLICK EN EL BOTON DE AGREGAR SERVICIO
+	$("#buttonAddService").on('click', function(){
+		$("#AddServiceModal").modal('show');
+	})
+
 
 	// CLICK EN EL BOTON DE REGISTRARSE
 	$("#RegistrarseButton").on('click', function(){
@@ -38,6 +43,7 @@ $(function(){
 		}
 	});
 
+	// CLICK EN EL BOTON DE INGRESO ANONIMO
 	$("#AnonimoButton").on('click', function(){
 		if (usuarioLogueado) {
 			MostrarModalRegistro();
@@ -47,8 +53,8 @@ $(function(){
 		}
 	});
 
-
-	$(".navbarItem").on('click', function(item){
+	// CLICK EN EL NAVBAR 
+		$(".navbarItem").on('click', function(item){
 		item.preventDefault();
 		item.stopPropagation();
 		item.stopImmediatePropagation();
@@ -96,21 +102,21 @@ $(function(){
 	// CLICK EN EL BOTON DE ACEPTAR DEL LOG IN
 	$("#modalLogInButton").on('click', function(){
 		let inputs = $('#formLogIn :input');
-		var tempusuario= inputs[0].value;
-		var tempcontrasena=inputs[1].value;
-		let tempfind = usuarios.find(temp => temp.email === tempusuario)
-	if (!(tempfind)) {
+		var tempUsuario= inputs[0].value;
+		var tempContrasena=inputs[1].value;
+		let tempFind = usuarios.find(iterator => iterator.email === tempUsuario)
+	if (!(tempFind)) {
 		var tempText = "(cheatmode) Emails válidos:";
 		for (const iterator of usuarios) {
 			tempText=tempText + " " + iterator.email ;
 		}
 		$("#labelFormLogIn").text(tempText)
 	} else {
-		if (tempcontrasena==tempfind.contrasena) {
-			seleccionarUsuario(tempfind.email);
+		if (tempContrasena==tempFind.contrasena) {
+			seleccionarUsuario(tempFind.email);
 			cerrarModales();
 		} else {
-			var tempText = "(cheatmode) La contraseña es: "+ tempfind.contrasena;
+			var tempText = "(cheatmode) La contraseña es: "+ tempFind.contrasena;
 			$("#labelFormLogIn").text(tempText)
 		}
 	}

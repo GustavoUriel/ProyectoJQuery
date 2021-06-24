@@ -1,5 +1,5 @@
 // DEFINICIONES DE LAS CLASES
-class unTipoCredito {
+class TipoCredito {
 	constructor(id, nombre, imagen, descripcion) {
 			this.id = id;
 			this.nombre = nombre;
@@ -7,7 +7,7 @@ class unTipoCredito {
 			this.descripcion = descripcion;
 	}
 }
-class unOtorgante {
+class Otorgante {
 	constructor(id, nombre, imagen, descripcion, telefono, otorgaTarjetaDeCredito, showOnCarousel) {
 			this.id = id;
 			this.nombre = nombre;
@@ -18,7 +18,7 @@ class unOtorgante {
 			this.showOnCarousel = showOnCarousel;
 	}
 }
-class unUsuario {
+class Usuario {
 	constructor(id, nombre, apellido, email, contrasena, provincia, ciudad, estadoCivil, ingresosSueldo, ingresosAutonomo, ingresosNegro, tipoDeIngresos, casaPropia, vehiculo) {
 		this.id = id;
 		this.nombre = nombre;
@@ -37,13 +37,15 @@ class unUsuario {
 	}
 
 }
-class unaCuenta {
-	constructor(idUsuario, idOtorgante, idTipoCredito) {
-			this.idUsuario = idUsuario;
-			this.idOtorgante = idOtorgante;
-			this.idTipoCredito = idTipoCredito;
+class Cuenta {
+	constructor(id, idUsuario, idOtorgante, idTipoCredito, fecha) {
+		this.id = id;
+		this.idUsuario = idUsuario;
+		this.idOtorgante = idOtorgante;
+		this.idTipoCredito = idTipoCredito;
+		this.fecha = fecha;
 	}
-	CargarUsuario(email){
+/* 	CargarUsuario(email){
 		let tempfind = usuarios.find(temp => temp.email === email)
 		if (tempfind) {
 			this.idUsuario=tempfind.id;
@@ -65,11 +67,11 @@ class unaCuenta {
 		return true;
 	}
 	Borrar(){
-		borrar = cuentas.findIndex(temp => temp.id === this.id);
+		borrar = cuentas.findIndex(iterator => iterator.id === this.id);
 		if (borrar){
 			cuentas.splice(borrar, 1);
 			return true;
 		}
 		return false;
-	}
+	} */
 }

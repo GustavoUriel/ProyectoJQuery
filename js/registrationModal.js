@@ -31,36 +31,40 @@ $(function(){
 	modalRegDataSoyEstatal = modalRegInputsDatosPersonales[5]; //checked: 
 	modalRegDataTengoCasa = modalRegInputsDatosPersonales[7]; //checked: 
 	modalRegDataTengoAuto = modalRegInputsDatosPersonales[9]; //checked: 
+})
 
 	// AL ABRIR EL MODAL DE REGISTRO
 	$('#RegistrarseModal').on('show.bs.modal', function() {
 		if (usuarioLogueado){
-			modalRegCargarUsuario(usuarios.find(temp => localStorage.usuarioLogueado === temp.email));
+			modalRegCargarUsuario(usuarios.find(iterator => localStorage.usuarioLogueado === iterator.email));
 		} else {
-			console.log("no hay cargado, borrando");
 			modalRegBorrar();
 		}
 	})
 
-	$('#RegFormSProvincia').on('change', (function (e) { 
+	$('#RegFormSProvincia').on('change', function (e) { 
+
 		//CADA VEZ QUE CAMBIA EL VALOR DEL SELECT SE REALIZAR UNA LLAMADA AL API PARA CARGAR LOS MUNICIPIOS CORRESPONDIENTES.
 		let idProvincia = $(this).val();
 		//LA LLAMADA AL API PARA LOS MUNICIPIOS SE REALIZA MEDIANTE UNA FUNCIÒN. ASI PUEDE UTILIZARSE EN LA CARGA INICIAL TAMBIEN.
-		console.log(idProvincia);
 		let apiMunicipios = `https://apis.datos.gob.ar/georef/api/municipios?provincia=${idProvincia}&campos=id,nombre&max=100`;
 		//SE REALIZA LA LLAMADA GET Y SE CARGAR EL SELECT
-		console.log(apiMunicipios);
-		$.get(apiMunicipios, function(datos,estado){
-			$('#RegFormSCiudad').empty();
-			//console.log(datos);
-			for (const municipio of datos.municipios) {
-				console.log(municipio.id);
-				console.log(municipio.nombre);
-				$('#RegFormSCiudad').append(`<option value="${municipio.id}">${municipio.nombre}</option>`)
+	$.get(apiMunicipios,callbackGetMunicipios);
+	// CARGAR LOS MUNICIPIOS
+	});
+	function callbackGetMunicipios(respuesta, estado){
+		$("#RegFormSCiudad").empty();
+		if(estado === "success"){
+			respuesta.municipios.sort((a,b) => (a.nombre.toLowerCase() > b.nombre.toLowerCase()) ? 1 : ((a.nombre.toLowerCase() < b.nombre.toLowerCase()) ? -1 : 0));
+			for (const iterator of respuesta.municipios) {
+				//AGREGAMOS UNA OPCION AL SELECT POR USUARIO EN LA RESPUESTA, EMPLEAMOS MEJOR LA NOTACION DE TEMPLATE DE CARACTERES (EJ:`cadena${variable}cadena2`) PARA DEFINIR EL ELEMENTO AGREGAR AL DOM.
+				$('#RegFormSCiudad').append(`<option value="${iterator.id}">${iterator.nombre}</option>`)
 			}
-		});
-	}));
-});
+		}
+		$("#RegFormSProvincia").index=0;
+	}
+
+
 	// AL CERRAR MODAL DE REGISTRO
 	$('#RegistrarseModal').on('hidden.bs.modal', function() {
 		modalRegBorrar();
@@ -68,31 +72,23 @@ $(function(){
 
 	// AL CLICK EN EL BOTON DE SIGUIENTE/REGISTRAR
     $("#RegFormBotonAceptar").on('click', function(){
-		console.log('1');
         if ( $("#RegFormBotonAceptar").text()=="Siguiente") {
-			console.log('2');
 			var ok=true;
 			ok= (ok && RegFormValidateEmail());
 			ok= (ok && RegFormValidatePasswords());
-			console.log('3');
 			if (ok) {
-				console.log('4');
 				RegFormAPag(2);
 				$("#RegFormBotonAceptar").text("Registrarse");
 			} else {		
-				console.log('5');
 				return;
 			}
 		} else {		
-			console.log('6');
 			var ok;
 			ok= RegFormValidateDatosUsuario();
 			if (ok) {
-				console.log('7');
 				RegFormRegistrarUsuario();
 				/* cerrarModales(); */
 			} else {
-				console.log('8');
 				return;
 			} 
 		}
@@ -159,14 +155,14 @@ function modalRegBorrar(){
 	RegFormAPag(1);
 }
 
-function RegFormMensaje(msg) {
+function RegFormMensaje(parameter) {
 	$("#labelModalRegMensaje").slideUp(constSpeed, ()=> {
-		$("#labelModalRegMensaje").text(msg);
+		$("#labelModalRegMensaje").text(parameter);
 		$("#labelModalRegMensaje").slideDown(constSpeed)
 	})
 } 
-function RegFormAPag(num){
-	$(`#modalRegTab li:nth-child(${num}) a`).tab('show');
+function RegFormAPag(parameter){
+	$(`#modalRegTab li:nth-child(${parameter}) a`).tab('show');
 }
 
 function RegFormRegistrarUsuario(){
@@ -181,16 +177,12 @@ function RegFormRegistrarUsuario(){
 		if (iterator.selected){txtCiudad=iterator.text}
 	}
 	usuarioAGuardar=UsuarioPorEmail(modalRegInputsUsuario[0].value);
-console.log(usuarioAGuardar);
 	if (typeof usuarioAGuardar === 'undefined') {
 		txtId=usuarios.length;
-		usuarioAGuardar= new unUsuario();
-		console.log("no habia");
+		usuarioAGuardar= new Usuario();
 	} else {
 		txtId=usuarioAGuardar.id;
-		console.log("habia");
 	}
-console.log(txtId);
 	usuarioAGuardar.id=txtId;
 	usuarioAGuardar.nombre=modalRegDataNombres.value;
 	usuarioAGuardar.apellido=modalRegDataApellido.value;
@@ -205,17 +197,16 @@ console.log(txtId);
 	usuarioAGuardar.casaPropia=modalRegDataTengoCasa.checked;
 	usuarioAGuardar.vehiculo=modalRegDataTengoAuto.checked;
 		
-	console.log(usuarioAGuardar);
 
 	usuarios.push(usuarioAGuardar);
-	localStorage.setItem("checkLogueado", JSON.stringify(true));
+	localStorage.setItem("checkLogueado", "true");
 	localStorage.setItem("usuarioLogueado", usuarioAGuardar.email);
 	localStorage.setItem("usuarios",JSON.stringify(usuarios));
 	cerrarModales();
 	actualizar();
 }
-function UsuarioPorEmail(email){
-	return usuarios.find(temp => email === temp.email)
+function UsuarioPorEmail(parameter){
+	return usuarios.find(iterator => parameter === iterator.email)
 }
 
 function modalRegCargarUsuario(item){
@@ -239,3 +230,4 @@ function modalRegCargarUsuario(item){
 	modalRegDataTengoCasa.checked = item.casaPropia;
 	modalRegDataTengoAuto.checked = item.vehiculo;
 }
+

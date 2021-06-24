@@ -1,11 +1,10 @@
-
-
 // INICIALIZAR DATOS CON EJEMPLOS Y ALGO DE RANDOM, SI ES QUE NO ESTAN CARGADOS EN EL LOCALSTORAGE
 function inicializarDatos(){
 
-	// INICIALIZO LA VARIABLE LOCAL CHECKLOGUEADO PARA QUE NO DE ERROR EN POSIBLES COSULTAS
-console.log("usuario logueado?" + localStorage.checkLogueado);
-	if (!(typeof localStorage.checkLogueado === 'boolean')) {localStorage.checkLogueado = false}
+
+	// INICIALIZO LA VARIABLE LOCAL CHECKLOGUEADO PARA QUE NO DE ERROR EN POSIBLES CONSULTAS
+	if (localStorage.checkLogueado !== "true") {
+		localStorage.checkLogueado = "false"}
 
 	//LAMADA ASINCRONA GET PARA OBTENER EL LISTADO DE LAS PROVINCIAS
 	$.get(URLJsonProvincias,callbackGetProvincias);
@@ -23,59 +22,64 @@ console.log("usuario logueado?" + localStorage.checkLogueado);
 		$("#RegFormSProvincia").index=0;
 	}
 
+// MATRIZ DE TIPOS DE CREDITOS - SI ES UNDEFINED CARGAR DE LOCALSTORAGE
+	if (typeof localStorage.tiposCreditos !== 'undefined'){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
+		tiposCreditos = JSON.parse(localStorage.tiposCreditos);}
+	
+// MATRIZ DE OTORGANTES - SI ES UNDEFINED CARGAR DE LOCALSTORAGE
+	if (typeof localStorage.otorgantes !== 'undefined'){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
+		otorgantes = JSON.parse(localStorage.otorgantes);}
+	
+// MATRIZ DE USUARIOS - SI ES UNDEFINED CARGAR DE LOCALSTORAGE
+	if (typeof localStorage.usuarios !== 'undefined'){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
+		usuarios = JSON.parse(localStorage.usuarios);}
 
-	{// MATRIZ DE TIPOS DE CREDITOS
-		if (!!(localStorage.tiposCreditos)){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
-			tiposCreditos = JSON.parse(localStorage.tiposCreditos);
-		} 
-		if (tiposCreditos.length==0){ // SI EL ARRAY ES VACÍO, LO CARGO CON LOS DATOS POR HARD
-			$.getJSON(JSONtiposCreditos, function(datos,estado){tiposCreditos = datos})
-			// Y LO GUARDO EN EL LOCALSTORAGE
-		}
-		localStorage.setItem("tiposCreditos",JSON.stringify(tiposCreditos));
-
+	// MATRIZ DE CUENTAS - SI ES UNDEFINED CARGAR DE LOCALSTORAGE
+	if (typeof localStorage.cuentas !== 'undefined'){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
+		cuentas = JSON.parse(localStorage.cuentas);}
+		
+	// CALLBACK0, INICIO LA SECUENCIA DE CALLBACKS. CARGA TIPOS DE CREDITOS
+	var respuestaGJSON;
+	cbk0();
+	// FUNCION CALLBACK0, CARGA TIPOS DE CREDITOS
+	function cbk0(){
+		$.getJSON(JSONtiposCreditos,
+			function(datos,estado){respuestaGJSON = datos}).done(
+			() => {	if (tiposCreditos.length==0){ 
+				tiposCreditos=respuestaGJSON;
+						localStorage.setItem("tiposCreditos",JSON.stringify(tiposCreditos));}
+					cbk1();})
 	}
-	{	// MATRIZ DE OTORGANTES
-		if (!!(localStorage.otorgantes)){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
-			otorgantes = JSON.parse(localStorage.otorgantes);
-		} 
-		if (otorgantes.length == 0){ // SI EL ARRAY ES VACÍO, LO CARGO CON LOS DATOS POR HARD
-			$.getJSON(JSONotorgantes, function(datos,estado){otorgantes = datos})
-			// Y LO GUARDO EN EL LOCALSTORAGE
-		}
-		localStorage.setItem("otorgantes",JSON.stringify(otorgantes));
+	// FUNCION CALLBACK1, CARGA OTORGANTES
+	function cbk1(){
+		$.getJSON(JSONotorgantes,
+			function(datos,estado){respuestaGJSON = datos}).done(
+				() => {	if (otorgantes.length==0){ 
+					otorgantes=respuestaGJSON;
+					localStorage.setItem("otorgantes",JSON.stringify(otorgantes));}
+				cbk2();})
 	}
-
-	{	// MATRIZ DE USUARIOS
-		if (!!(localStorage.usuarios)){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
-			usuarios = JSON.parse(localStorage.usuarios);
-		} 
-		if (usuarios.length == 0){ // SI EL ARRAY ES VACÍO, LO CARGO CON LOS DATOS POR HARD
-			$.getJSON(JSONusuarios, function(datos,estado){usuarios = datos})
-			// Y LO GUARDO EN EL LOCALSTORAGE
-		}
-		localStorage.setItem("usuarios",JSON.stringify(usuarios));
-
+	// FUNCION CALLBACK2, CARGA USUARIOS
+	function cbk2(){
+		$.getJSON(JSONusuarios,
+			function(datos,estado){respuestaGJSON = datos}).done(
+			() => {	if (usuarios.length==0){ 
+					usuarios=respuestaGJSON;
+					localStorage.setItem("usuarios",JSON.stringify(usuarios));}
+				cbk3();})
 	}
-
-	{	// MATRIZ DE CUENTAS
-		if (!!(localStorage.cuentas)){ // SI EL LOCALSTORAGE TIENE DATOS, LOS TOMO.
-			cuentas = JSON.parse(localStorage.cuentas);
-		} 
-		if (cuentas.length == 0){ // SI EL ARRAY ES VACÍO, LO CARGO CON LOS DATOS POR HARD
-			$.getJSON(JSONcuentas, function(datos,estado){cuentas = datos})
-			// Y LO GUARDO EN EL LOCALSTORAGE
-		}
-		localStorage.setItem("cuentas",JSON.stringify(cuentas));
+	// FUNCION CALLBACK3, CARGA CUENTAS
+	function cbk3(){
+		$.getJSON(JSONcuentas,
+			function(datos,estado){respuestaGJSON = datos}).done(
+			() => {	if (cuentas.length==0){ 
+						cuentas=respuestaGJSON;
+						localStorage.setItem("cuentas",JSON.stringify(cuentas));}
+					cbk4();})
 	}
-
-	// SOLO PARA CUMPLIR
-/* 	$.post("https://jsonplaceholder.typicode.com/posts",{title: "usuarios" ,body: JSON.stringify(usuarios), userId: "none"}, callbackPostPublicacion);
-	function callbackPostPublicacion(respuesta){
-		console.log(respuesta);
+	{	// CALLBACK4, ACTUALIZAR
+		function cbk4(){actualizar();}
 	}
- */
-
 }
 
 

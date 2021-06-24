@@ -3,12 +3,12 @@
 
 	function actualizar(){ // CHEQUEAR SI HAY USUARIO LOGUEADO Y SI LO HAY, CARGAR EN LA INTERFAZ SUS DATOS Y SUS CUENTAS
 		deshabilitarBotones(true);
-		if (JSON.parse(localStorage.checkLogueado) === true) {
-		usuarioLogueado = usuarios.find(temp	=> temp.email === localStorage.usuarioLogueado);
-		cuentasUsuarioLogueado = JSON.parse(localStorage.cuentas);
-		cuentasUsuarioLogueado = cuentasUsuarioLogueado.filter((temp)	=> temp.idUsuario == usuarioLogueado.id);
-		vaciarUsuario();
-		animacionConUsuario();
+		if (localStorage.checkLogueado == "true") {
+			usuarioLogueado = usuarios.find(iterator => iterator.email == localStorage.usuarioLogueado);
+			cuentasUsuarioLogueado = JSON.parse(localStorage.cuentas);
+			cuentasUsuarioLogueado = cuentasUsuarioLogueado.filter((iterator)	=> iterator.idUsuario == usuarioLogueado.id);
+			vaciarUsuario();
+			animacionConUsuario();
 	} else {
 		usuarioLogueado='';
 		cuentasUsuarioLogueado = [];
@@ -19,14 +19,33 @@
 function actualizar_continuarConUsuario(){
 	cargarInformaciónUsuario(usuarioLogueado);
 	for (const iterator of cuentasUsuarioLogueado) {
-		agregarServiciosUsuario(tiposCreditos.find(temp	=> temp.id === iterator.idTipoCredito).nombre,
-		tiposCreditos.find(temp	=> temp.id === iterator.idTipoCredito).descripcion,
-		otorgantes.find(temp	=> temp.id === iterator.idOtorgante).descripcion,
-														"Nuestra propuesta generada por AI. La etiqueta es generada random ahora, pero debería ser calculable",
-														parseInt(Math.random() * 50) + "% de ahorro"
-														);
+		if (typeof iterator !== 'undefined'){
+			agregarServiciosUsuario(iterator);
+		}
 	}
 	deshabilitarBotones(false);
+	irA("ServiciosUsuario");
+	//	id="buttonDeleteService" name=${servicio.id}
+	$(".buttonDeleteService").on('click', function(e){
+		var nro;
+		nro = e.target.id;
+		nro = parseInt(nro.replace('servicio', ''));
+		borrarServicio(nro);
+	})
+}
+
+
+function borrarServicio(id){
+
+	cuentas = cuentas.filter(item => item.id !== id);
+	cuentasUsuarioLogueado = cuentasUsuarioLogueado.filter(item => item.id !== id);
+	localStorage.setItem("cuentas",JSON.stringify(cuentas));
+	$("#head"+id).slideUp(constSpeed, ()=> {
+		$("#head"+id).remove();
+	})
+	$("#body"+id).slideUp(constSpeed, ()=> {
+		$("#body"+id).remove();
+	})
 }
 
 function actualizar_continuarSinUsuario(){
@@ -35,13 +54,13 @@ function actualizar_continuarSinUsuario(){
 }
 
 function salirDeLaCuenta(){
-	localStorage.checkLogueado=JSON.stringify(false);
+	localStorage.checkLogueado="false";
 	actualizar();
 }
 
 function seleccionarUsuario(email){
-	localStorage.setItem('checkLogueado', JSON.stringify(true));
-	localStorage.setItem('usuarioLogueado',email);
+	localStorage.checkLogueado="true";
+	localStorage.usuarioLogueado=email;
 	actualizar(); 
 	irA("ServiciosUsuario");
 	cerrarModales();
@@ -56,10 +75,7 @@ function borrarTodo(){
 	usuarioLogueado=[];
 	cuentasUsuarioLogueado=[];
 	inicializarDatos();
-	actualizar();
 	cerrarModales();
 }
-
-
 
 

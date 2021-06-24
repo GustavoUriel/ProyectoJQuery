@@ -31,7 +31,7 @@
 						<div class="form-row">
 							<div class="form-group col-sm-4">
 									<label class="sr-only" for="email" id="logInEmail">E-mail</label>
-									<input type="email" class="form-control form-control-sm mr-1" id="logInEmail" value="E-mail">
+									<input type="email" class="form-control form-control-sm mr-1" id="logInEmail" placeholder="E-mail">
 							</div>
 							<div class="form-group col-sm-4">
 								<label class="sr-only" for="pass" id="logInContrasena">Contraseña</label>
@@ -74,6 +74,37 @@
 		</div>
 	</div>
 
+	<!--	MODAL AGREGAR SERVICIO -->
+	<div id="AddServiceModal" class="modal " role="dialog"> <!-- Ingresar -->
+		<div class="modal-dialog modal-lg" role="content">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Seleccione el servicio que desea registrar </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form id="formLogIn">
+						<div class="form-group">
+								<select class="form-control" id="ServFormOtorgante" placeholder="Prestador">
+								</select>
+								<label  class="height-1rem" id="labelOtorganteDescripcion"></label>
+						</div>
+						<div class="form-group">
+							<select class="form-control" id="ServFormServicio" placeholder="Servicio contratado">
+							</select>
+							<label class="height-3rem" id="labelServicioDescripcion"></label>
+					</div>
+						<div class="form-row">
+							<button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary btn-sm ml-1" id="buttonModalServicios">Aceptar</button>		
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!--	MODAL REGISTRARSE -->
 	<div id="RegistrarseModal" class="modal" role="dialog"> <!-- Registrarse -->
 		<div class="modal-dialog modal-lg" role="content">
@@ -92,9 +123,10 @@
 					<li class="nav-item">
 						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabDatosPersonales" role="tab" aria-controls="tabDatosPersonales" aria-selected="false">Mis datos</a>
 					</li>
-					<li class="nav-item">
+<!-- 					<li class="nav-item">
 						<a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#tabServicios" role="tab" aria-controls="tabServicios" aria-selected="false">Mis servicios</a>
 					</li>
+ -->
 				</ul>
 				<div class="tab-content" id="myTabContent">
 			<!--	MODAL REGISTRARSE USUARIO Y CONTRASEÑA-->
@@ -169,64 +201,6 @@
 			</div>
 		</div> 
 	</div> 
-
-	<!--	MODAL DISCLAIMER -->
-	<div id="DisclaimerModal" class="modal fade" role="dialog"> <!-- Ingresar -->
-		<div class="modal-dialog modal-lg" role="content">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Desligación de responsabilidades </h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-row">
-							<div class="form-group col-sm-4">
-									<label class="sr-only">No somos responsables de la información mostrada
-																					Sólo la generamos de acuerdo a la información proporcionada por los Bancos
-																					Y nuestro avanzado algoritmo de procesamiento.
-																					Además, ésto no es más que un simulador :)
-									</label>
-							</div>
-						</div>
-						<div class="form-row">
-							<button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cerrar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--	MODAL CONDICIONES DE USO -->
-	<div id="CondicionesDeUsoModal" class="modal fade" role="dialog"> <!-- Ingresar -->
-		<div class="modal-dialog modal-lg" role="content">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Condiciones de utilización de esta página </h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-row">
-							<div class="form-group col-sm-4">
-									<label class="sr-only">Acepto que, aunque no se publique y se cuide la información personal
-															De todas formas es posible que sea accedida por medio de instrusiones
-															Al sistema, como ocurre con otros sistemas como Facebook y Gmail.
-															Además, ésto no es más que un simulador :)
-									</label>
-							</div>
-						</div>
-						<div class="form-row">
-							<button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cerrar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<header>
 
@@ -327,7 +301,7 @@
 	</div>
 
 	<!--	PAGINA NOSOTROS -->
-	<div id="seccionNosotros" style="display: none"> <!-- Nosotros -->
+	<div id="seccionNosotros" style="display: none"> 
 		<div class="col col-sm-6 "> <!-- Historia -->
 			<h2>Nuestra Historia</h2>
 			<p>Empezamos a hacer esta página como un proyecto del cursado de Full Stack de <em>CoderHouse</em>.</p>
@@ -425,18 +399,17 @@
 	</div>
 
 	<!--	PAGINA SERVICIOS USUARIO -->
-	<div id="seccionServiciosUsuario" style="display: none"> <!-- Nosotros -->
-		<div class="container"></div> 
+	<div id="seccionServiciosUsuario" style="display: none"> 
+		<div class="container">
 			<div class="row"> 
 				<div id="txtInformacionPersonal" class="col-10 offset-1">
 				</div>
 			</div>
-			<div class="row"> 
-				<div class="col-12">
-					<h2 class="titulo-separador">Estas son las cuentas que nos contaste que tenés</h2>
-					<div id="acordeonServiciosUsuario">
-					</div>
-				</div>
+			<div class="row">
+				<button type="button" class="btn btn-primary font-weight-bold col-2" id="buttonAddService">Registrar nuevo servicio</button>
+				<h2 class="titulo-separador col-10">Estas son las cuentas que nos contaste que tenés</h2>
+			</div>
+			<div id="acordeonServiciosUsuario">
 			</div>
 		</div>
 	</div>
@@ -605,13 +578,6 @@
 		<div class="container">
 			<div class="row">			 
 				<div class="col-4 col-sm-2 offset-1">
-					<h5>Links</h5>
-					<ul class="list-unstyled">
-						<li><a href="#">Home</a></li>
-						<li><a href="./nosotros.html">Nosotros</a></li>
-						<li><a href="./clubes.html">Clubes</a></li>
-						<li><a href="./contacto.html">Contacto</a></li>
-					</ul>
 				</div>
 				<div class="col-7 col-sm-5">
 					<h5>Nuestra dirección</h5>
@@ -650,9 +616,9 @@
 	<script src="./js/constAndVar.js"></script>
 	<script src="./js/functions.js"></script>
 	<script src="./js/registrationModal.js"></script>
+	<script src="./js/serviciosModal.js"></script>
 	<script src="./js/events.js"></script>
 	<script src="./js/onDocument.js"></script>
-	<script src="./js/onData.js"></script>
 	<script src="./js/inicialization.js"></script>
 	<script src="./js/ready.js"></script>
 
